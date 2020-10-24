@@ -1,6 +1,7 @@
 site_name: FrameSync
 nav:
   - Get Started:
+    - Overview: index.md
     - Installation: home/installation.md
   - Tutorial:
     - Pong Game:
