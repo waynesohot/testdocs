@@ -2,8 +2,17 @@ site_name: FrameSync
 nav:
   - Get Started:
     - Installation: home/installation.md
+  - Tutorial:
+    - Pong Game:
+      - Overview: tutorial/pong/overview.md
+      - Creating FrameSyncAgent: tutorial/pong/createAgent.md
+      - Configuring FrameSyncEngine: tutorial/pong/configEngine.md
+      - Configuring FrameSyncGame: tutorial/pong/configGame.md
+      - Collecting Player Inputs: tutorial/pong/collectInput.md
+      - Complete Offline FrameSyncAgent: tutorial/pong/completeOfflineAgent.md
   - FrameSync:
-    - framesync.md
+    - Important Classes:
+      - FrameSyncAgent: frameSync/importantClass/frameSyncAgent.md
   - Physics:
     - physics.md
   - Fixed Math:
@@ -16,3 +25,43 @@ theme:
     scheme: slate
   features:
     - navigation.tabs
+
+markdown_extensions:
+  - admonition
+  - abbr
+  - attr_list
+  - def_list
+  - footnotes
+  - meta
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      repo_url_shorthand: true
+      user: squidfunk
+      repo: mkdocs-material
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      check_paths: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
