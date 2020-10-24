@@ -1,3 +1,18 @@
-site_name: My Docs
+site_name: FrameSync
+nav:
+  - Get Started:
+    - Installation: home/installation.md
+  - FrameSync:
+    - framesync.md
+  - Physics:
+    - physics.md
+  - Fixed Math:
+    - fixedmath.md
+extra_css:
+  - stylesheets/extra.css
 theme:
   name: material
+  palette:
+    scheme: slate
+  features:
+    - navigation.tabs
