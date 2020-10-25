@@ -13,7 +13,7 @@
     
     
       
-        <title>Collecting Player Inputs - FrameSync</title>
+        <title>StaticFrameSyncBehaviour - FrameSync</title>
       
     
     
@@ -58,7 +58,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#collecting-player-inputs" class="md-skip">
+        <a href="#staticframesyncbehaviour" class="md-skip">
           Skip to content
         </a>
       
@@ -88,7 +88,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              Collecting Player Inputs
+              StaticFrameSyncBehaviour
             
           </span>
         </div>
@@ -405,20 +405,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-    <a href="./" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../collectInput/" class="md-nav__link">
       Collecting Player Inputs
     </a>
-    
   </li>
 
         
@@ -438,11 +429,70 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../staticFrameSyncBehaviour/" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        StaticFrameSyncBehaviour
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
       StaticFrameSyncBehaviour
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#framesync-managed-updates" class="md-nav__link">
+    FrameSync managed updates
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#framesync-managed-data" class="md-nav__link">
+    FrameSync managed data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#which-gameobject-should-have-a-staticframesyncbehaviour" class="md-nav__link">
+    Which GameObject should have a StaticFrameSyncBehaviour?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-the-staticframesyncbehaviour-componennt" class="md-nav__link">
+    Adding the StaticFrameSyncBehaviour componennt
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -661,6 +711,42 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#framesync-managed-updates" class="md-nav__link">
+    FrameSync managed updates
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#framesync-managed-data" class="md-nav__link">
+    FrameSync managed data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#which-gameobject-should-have-a-staticframesyncbehaviour" class="md-nav__link">
+    Which GameObject should have a StaticFrameSyncBehaviour?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-the-staticframesyncbehaviour-componennt" class="md-nav__link">
+    Adding the StaticFrameSyncBehaviour componennt
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -672,32 +758,61 @@
               
                 
                 
-                <h1 id="collecting-player-inputs">Collecting Player Inputs<a class="headerlink" href="#collecting-player-inputs" title="Permanent link">&para;</a></h1>
-<blockquote>
-<blockquote>
-<p><code>OnCollectLocalPlayerInputs</code> 
-Called every frame to collect the inputs of the local player.</p>
-</blockquote>
-</blockquote>
-<p>In <code>OnCollectLocalPlayerInputs</code>, you read player inputs from the Unity <code>Input</code> class and pass it to <code>FrameSyncInput</code>.</p>
-<p>Go to <code>ProjectSettings-&gt;Input manager</code> and add a new input <code>Vertical1</code>. You can <strong>Right-Click</strong> the input <code>Vertical</code> and <code>Duplicate Array Element</code> to copy the input settings. Set <code>Negative Button</code> to <code>down</code> and <code>Positive Button</code> to <code>up</code> for the new input.</p>
-<p><img alt="img" src="../../../assets/tutorial/InputSettings_Pong.PNG" width="720" /></p>
-<div class="tabbed-set" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">C#</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnCollectLocalPlayerInputs</span><span class="p">(</span><span class="n">SWFrameSyncInput</span> <span class="n">input</span><span class="p">,</span> <span class="n">SWFrameSyncGame</span> <span class="n">game</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="c1">// 1</span>
-    <span class="n">input</span><span class="p">.</span><span class="n">SetFloatForPlayer</span><span class="p">(</span><span class="s">&quot;y&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">Fix64</span><span class="p">)</span><span class="n">Input</span><span class="p">.</span><span class="n">GetAxis</span><span class="p">(</span><span class="s">&quot;Vertical&quot;</span><span class="p">),</span> <span class="n">player1</span><span class="p">);</span>
-    <span class="n">input</span><span class="p">.</span><span class="n">SetTriggerForPlayer</span><span class="p">(</span><span class="s">&quot;ready&quot;</span><span class="p">,</span> <span class="n">Input</span><span class="p">.</span><span class="n">GetKeyUp</span><span class="p">(</span><span class="n">KeyCode</span><span class="p">.</span><span class="n">G</span><span class="p">),</span> <span class="n">player1</span><span class="p">);</span>
-
-    <span class="c1">// 2</span>
-    <span class="n">input</span><span class="p">.</span><span class="n">SetFloatForPlayer</span><span class="p">(</span><span class="s">&quot;y&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">Fix64</span><span class="p">)</span><span class="n">Input</span><span class="p">.</span><span class="n">GetAxis</span><span class="p">(</span><span class="s">&quot;Vertical1&quot;</span><span class="p">),</span> <span class="n">player2</span><span class="p">);</span>
-    <span class="n">input</span><span class="p">.</span><span class="n">SetTriggerForPlayer</span><span class="p">(</span><span class="s">&quot;ready&quot;</span><span class="p">,</span> <span class="n">Input</span><span class="p">.</span><span class="n">GetKeyUp</span><span class="p">(</span><span class="n">KeyCode</span><span class="p">.</span><span class="n">H</span><span class="p">),</span> <span class="n">player2</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>
-</div>
-</div>
-<p>In <code>// 1</code>, player1 uses <code>w</code> and <code>s</code> to move and uses <code>g</code> to trigger the <code>ready</code> input.</p>
-<p>In <code>// 2</code>, player2 uses <code>up arrow</code> and <code>down arrow</code> to move and uses <code>h</code> to trigger the <code>ready</code> input.</p>
+                <h1 id="staticframesyncbehaviour">StaticFrameSyncBehaviour<a class="headerlink" href="#staticframesyncbehaviour" title="Permanent link">&para;</a></h1>
+<h2 id="framesync-managed-updates">FrameSync managed updates<a class="headerlink" href="#framesync-managed-updates" title="Permanent link">&para;</a></h2>
+<p><code>StaticFrameSyncBehaviour</code> registers its GameObject to the FrameSyncEngine.</p>
+<p>When the <code>FrameSyncEngine</code> simulates a frame, it prepares the player inputs for the frame and notifies all the registered <code>StaticFrameSyncBehaviour</code>s to update.</p>
+<p>When a <code>StaticFrameSyncBehaviour</code> got notified about the simulation, it excutes the <code>FrameSyncUpdate()</code> method of the <code>IFrameSyncUpdate</code> MonoBehaviour components of its GameObject.</p>
+<details class="info" open="open"><summary>Info</summary><p>You can think of <code>FrameSyncUpdate()</code> as the FrameSync version of the Unity <code>Update()</code>. It is called every FrameSync frame. Your behaviour and logic should be excuted in the <code>FrameSyncUpdate()</code> method. </p>
+</details>
+<h2 id="framesync-managed-data">FrameSync managed data<a class="headerlink" href="#framesync-managed-data" title="Permanent link">&para;</a></h2>
+<p>When the <code>FrameSyncEngine</code> finished simulating a frame, it notifies all the registered <code>StaticFrameSyncBehaviour</code>s to export their data. The exported data is used for the FrameSync consensus mechanism to achieve the agreement on the simulation results among different players across the network.</p>
+<p>When a <code>StaticFrameSyncBehaviour</code> is asked to export its data, it excutes the <code>Export()</code> method of the <code>IFrameSyncData</code> MonoBehaviour components of its GameObject.</p>
+<p>When a <code>StaticFrameSyncBehaviour</code> is asked to restore to a frame, it excutes the <code>Import()</code> method of the <code>IFrameSyncData</code> MonoBehaviour components of its GameObject with the saved data.</p>
+<h2 id="which-gameobject-should-have-a-staticframesyncbehaviour">Which GameObject should have a StaticFrameSyncBehaviour?<a class="headerlink" href="#which-gameobject-should-have-a-staticframesyncbehaviour" title="Permanent link">&para;</a></h2>
+<p>You have the following Rigidbodies active in the game. </p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Body Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ball</td>
+<td>Dynamic</td>
+<td>Controlled by physics</td>
+</tr>
+<tr>
+<td>Paddles</td>
+<td>Kinematic</td>
+<td>Controlled by players</td>
+</tr>
+<tr>
+<td>Walls</td>
+<td>Staic</td>
+<td>Do not move</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>For the Paddles, they read player inputs to move and their position information should be exported, so we should add <code>StaticFrameSyncBehaviour</code> to them.</p>
+</li>
+<li>
+<p>For the Ball, it does boundary check every frame and its position information should be exported, so it should have a <code>StaticFrameSyncBehaviour</code>.</p>
+</li>
+<li>
+<p>For the Walls, they do not move and their physical data does not change so we do not need to add <code>StaticFrameSyncBehaviour</code> to them.</p>
+</li>
+</ul>
+<h2 id="adding-the-staticframesyncbehaviour-componennt">Adding the StaticFrameSyncBehaviour componennt<a class="headerlink" href="#adding-the-staticframesyncbehaviour-componennt" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Select the <code>Ball</code> and the <code>Paddle</code>s in the <code>Hierarchy</code> window and add <code>StaticFrameSyncBehaviour</code> to them by selecting <code>Add Component</code>-&gt;<code>Static Frame Sync Behaviour</code>.</li>
+</ul>
+<p><img alt="img" src="../../../assets/tutorial/AddStaticFrameSync.PNG" width="720" /></p>
                 
               
               
@@ -716,7 +831,7 @@ Called every frame to collect the inputs of the local player.</p>
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../configGame/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../completeOfflineAgent/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -725,19 +840,19 @@ Called every frame to collect the inputs of the local player.</p>
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Configuring FrameSyncGame
+                Complete Offline FrameSyncAgent
               </div>
             </div>
           </a>
         
         
-          <a href="../completeOfflineAgent/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../paddleOwner/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Complete Offline FrameSyncAgent
+                Paddle Owner
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">

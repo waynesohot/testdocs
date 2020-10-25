@@ -13,7 +13,7 @@
     
     
       
-        <title>Collecting Player Inputs - FrameSync</title>
+        <title>Physics 2D - FrameSync</title>
       
     
     
@@ -58,7 +58,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#collecting-player-inputs" class="md-skip">
+        <a href="#physics-2d" class="md-skip">
           Skip to content
         </a>
       
@@ -88,7 +88,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              Collecting Player Inputs
+              Physics 2D
             
           </span>
         </div>
@@ -357,11 +357,84 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../parallel2d/" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Physics 2D
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
       Physics 2D
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#rigidbodies" class="md-nav__link">
+    Rigidbodies
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-the-ball" class="md-nav__link">
+    Creating the ball
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-the-paddles" class="md-nav__link">
+    Creating the paddles
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-the-walls" class="md-nav__link">
+    Creating the walls
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-the-camera" class="md-nav__link">
+    Setting up the camera
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#final-touch" class="md-nav__link">
+    Final touch
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -405,20 +478,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-    <a href="./" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../collectInput/" class="md-nav__link">
       Collecting Player Inputs
     </a>
-    
   </li>
 
         
@@ -661,6 +725,56 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#rigidbodies" class="md-nav__link">
+    Rigidbodies
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-the-ball" class="md-nav__link">
+    Creating the ball
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-the-paddles" class="md-nav__link">
+    Creating the paddles
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-the-walls" class="md-nav__link">
+    Creating the walls
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-the-camera" class="md-nav__link">
+    Setting up the camera
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#final-touch" class="md-nav__link">
+    Final touch
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -672,32 +786,132 @@
               
                 
                 
-                <h1 id="collecting-player-inputs">Collecting Player Inputs<a class="headerlink" href="#collecting-player-inputs" title="Permanent link">&para;</a></h1>
-<blockquote>
-<blockquote>
-<p><code>OnCollectLocalPlayerInputs</code> 
-Called every frame to collect the inputs of the local player.</p>
-</blockquote>
-</blockquote>
-<p>In <code>OnCollectLocalPlayerInputs</code>, you read player inputs from the Unity <code>Input</code> class and pass it to <code>FrameSyncInput</code>.</p>
-<p>Go to <code>ProjectSettings-&gt;Input manager</code> and add a new input <code>Vertical1</code>. You can <strong>Right-Click</strong> the input <code>Vertical</code> and <code>Duplicate Array Element</code> to copy the input settings. Set <code>Negative Button</code> to <code>down</code> and <code>Positive Button</code> to <code>up</code> for the new input.</p>
-<p><img alt="img" src="../../../assets/tutorial/InputSettings_Pong.PNG" width="720" /></p>
-<div class="tabbed-set" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">C#</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnCollectLocalPlayerInputs</span><span class="p">(</span><span class="n">SWFrameSyncInput</span> <span class="n">input</span><span class="p">,</span> <span class="n">SWFrameSyncGame</span> <span class="n">game</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="c1">// 1</span>
-    <span class="n">input</span><span class="p">.</span><span class="n">SetFloatForPlayer</span><span class="p">(</span><span class="s">&quot;y&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">Fix64</span><span class="p">)</span><span class="n">Input</span><span class="p">.</span><span class="n">GetAxis</span><span class="p">(</span><span class="s">&quot;Vertical&quot;</span><span class="p">),</span> <span class="n">player1</span><span class="p">);</span>
-    <span class="n">input</span><span class="p">.</span><span class="n">SetTriggerForPlayer</span><span class="p">(</span><span class="s">&quot;ready&quot;</span><span class="p">,</span> <span class="n">Input</span><span class="p">.</span><span class="n">GetKeyUp</span><span class="p">(</span><span class="n">KeyCode</span><span class="p">.</span><span class="n">G</span><span class="p">),</span> <span class="n">player1</span><span class="p">);</span>
-
-    <span class="c1">// 2</span>
-    <span class="n">input</span><span class="p">.</span><span class="n">SetFloatForPlayer</span><span class="p">(</span><span class="s">&quot;y&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">Fix64</span><span class="p">)</span><span class="n">Input</span><span class="p">.</span><span class="n">GetAxis</span><span class="p">(</span><span class="s">&quot;Vertical1&quot;</span><span class="p">),</span> <span class="n">player2</span><span class="p">);</span>
-    <span class="n">input</span><span class="p">.</span><span class="n">SetTriggerForPlayer</span><span class="p">(</span><span class="s">&quot;ready&quot;</span><span class="p">,</span> <span class="n">Input</span><span class="p">.</span><span class="n">GetKeyUp</span><span class="p">(</span><span class="n">KeyCode</span><span class="p">.</span><span class="n">H</span><span class="p">),</span> <span class="n">player2</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>
-</div>
-</div>
-<p>In <code>// 1</code>, player1 uses <code>w</code> and <code>s</code> to move and uses <code>g</code> to trigger the <code>ready</code> input.</p>
-<p>In <code>// 2</code>, player2 uses <code>up arrow</code> and <code>down arrow</code> to move and uses <code>h</code> to trigger the <code>ready</code> input.</p>
+                <h1 id="physics-2d">Physics 2D<a class="headerlink" href="#physics-2d" title="Permanent link">&para;</a></h1>
+<p>FrameSync comes with a built-in physics engine to help you simulate physics in your game.</p>
+<p>In this tutorial, you are going to use the build-in 2D physics to simulate the ball's movment. </p>
+<p>For your first step, you will create a 2D Physics Controller.
+<strong>Right-Click</strong> in the <code>Hierarchy</code> window and select <code>Parallel</code>-&gt;<code>2D</code>-&gt;<code>Physics Controller</code>.</p>
+<p><img alt="img" src="../../../assets/tutorial/PhysicsController_Pong.PNG" width="720" /></p>
+<h2 id="rigidbodies">Rigidbodies<a class="headerlink" href="#rigidbodies" title="Permanent link">&para;</a></h2>
+<p>Next, you will create the following Rigidbodies.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Body Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ball</td>
+<td>Dynamic</td>
+<td>Controlled by physics</td>
+</tr>
+<tr>
+<td>Paddles</td>
+<td>Kinematic</td>
+<td>Controlled by players</td>
+</tr>
+<tr>
+<td>Walls</td>
+<td>Staic</td>
+<td>Do not move</td>
+</tr>
+</tbody>
+</table>
+<h2 id="creating-the-ball">Creating the ball<a class="headerlink" href="#creating-the-ball" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Create a 2D Sprite GameObject by selecting <code>2D Object</code>-&gt;<code>Sprite</code> and name it <code>Ball</code>.</li>
+</ul>
+<p><img alt="img" src="../../../assets/tutorial/Create2DSprite.PNG" width="720" /></p>
+<ul>
+<li>
+<p>Create a circle sprite by selecting <code>Create</code>-&gt;<code>Sprites</code>-&gt;<code>Circle</code> in the <code>Project</code> windows. </p>
+</li>
+<li>
+<p>Assign the circle sprite to the <code>Ball</code> 2D GameObject.</p>
+</li>
+<li>
+<p>Reset the <code>Transform</code> component of the <code>Ball</code> GameObject to make sure it is positioned at <code>(0 ,0, 0)</code>.</p>
+</li>
+<li>
+<p>Add a ParallelRigidbody2D componenet to the <code>Ball</code> GameObject.</p>
+</li>
+</ul>
+<p><img alt="img" src="../../../assets/tutorial/AddRigidbody2D.PNG" width="720" /></p>
+<ul>
+<li>Add a ParallelCircleCollider componenet to the <code>Ball</code> GameObject.</li>
+</ul>
+<p><img alt="img" src="../../../assets/tutorial/AddCircleCollider.PNG" width="720" /></p>
+<h2 id="creating-the-paddles">Creating the paddles<a class="headerlink" href="#creating-the-paddles" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>Create a 2D Sprite GameObject by selecting <code>2D Object</code>-&gt;<code>Sprite</code> and name it <code>Paddle</code>.</p>
+</li>
+<li>
+<p>Create a box sprite by selecting <code>Create</code>-&gt;<code>Sprites</code>-&gt;<code>Square</code> in the <code>Project</code> windows. </p>
+</li>
+<li>
+<p>Assign the box sprite to the <code>Paddle</code> GameObject.</p>
+</li>
+<li>
+<p>Move the <code>Paddle</code> to <code>(-10, 0, 0)</code>.</p>
+</li>
+<li>
+<p>Set the <code>Scale</code> of <code>Paddle</code> to <code>(1, 3, 1)</code>.</p>
+</li>
+<li>
+<p>Add a ParallelRigidbody2D componenet to the <code>Paddle</code> GameObject.</p>
+</li>
+<li>
+<p>Add a ParallelBoxCollider componenet to the <code>Paddle</code> GameObject.</p>
+</li>
+<li>
+<p>Set <code>Body Type</code> of the ParallelRigidbody2D component to <code>Kinematic</code>.</p>
+</li>
+</ul>
+<p><img alt="img" src="../../../assets/tutorial/SetKinematic.PNG" width="720" /></p>
+<ul>
+<li>Drag the <code>Paddle</code> to the <code>Project</code> window to make it a prefab and make another <code>Paddle</code> at <code>(10, 0, 0)</code>.</li>
+</ul>
+<h2 id="creating-the-walls">Creating the walls<a class="headerlink" href="#creating-the-walls" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>Create a 2D Sprite GameObject by selecting <code>2D Object</code>-&gt;<code>Sprite</code> and name it <code>Wall</code>.</p>
+</li>
+<li>
+<p>Assign the box sprite to the <code>Wall</code> GameObject.</p>
+</li>
+<li>
+<p>Move the <code>Wall</code> to <code>(0, 5, 0)</code>.</p>
+</li>
+<li>
+<p>Set the <code>Scale</code> of <code>Wall</code> to <code>(21, 1, 1)</code>.</p>
+</li>
+<li>
+<p>Add a ParallelRigidbody2D componenet to the <code>Wall</code> GameObject.</p>
+</li>
+<li>
+<p>Add a ParallelBoxCollider componenet to the <code>Wall</code> GameObject.</p>
+</li>
+<li>
+<p>Set <code>Body Type</code> of the ParallelRigidbody2D component to <code>Static</code>.</p>
+</li>
+<li>
+<p>Duplicate the <code>Wall</code> and place the duplicated <code>Wall (1)</code> at <code>(0, -5, 0)</code>.</p>
+</li>
+</ul>
+<h2 id="setting-up-the-camera">Setting up the camera<a class="headerlink" href="#setting-up-the-camera" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Set <code>clear Flags</code> of the Main Camera to <code>Solid Color</code>.</li>
+<li>Set <code>Background</code> of the Main Camera to black.</li>
+<li>Set <code>Aspect ratio</code> of the <code>Game</code> window to <code>16:9</code>.
+<img alt="img" src="../../../assets/tutorial/16by9.PNG" width="720" /></li>
+</ul>
+<h2 id="final-touch">Final touch<a class="headerlink" href="#final-touch" title="Permanent link">&para;</a></h2>
+<p>You can change the color of the sprite to your liking. The scene should look like.</p>
+<p><img alt="img" src="../../../assets/tutorial/Scene_Pong.PNG" width="760" /></p>
                 
               
               
@@ -716,7 +930,7 @@ Called every frame to collect the inputs of the local player.</p>
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../configGame/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../overview/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -725,19 +939,19 @@ Called every frame to collect the inputs of the local player.</p>
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Configuring FrameSyncGame
+                Overview
               </div>
             </div>
           </a>
         
         
-          <a href="../completeOfflineAgent/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../createAgent/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Complete Offline FrameSyncAgent
+                Creating FrameSyncAgent
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">

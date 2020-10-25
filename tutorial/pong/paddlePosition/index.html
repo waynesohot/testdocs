@@ -13,7 +13,7 @@
     
     
       
-        <title>Collecting Player Inputs - FrameSync</title>
+        <title>Paddle Position Data - FrameSync</title>
       
     
     
@@ -58,7 +58,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#collecting-player-inputs" class="md-skip">
+        <a href="#paddle-position-data" class="md-skip">
           Skip to content
         </a>
       
@@ -88,7 +88,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              Collecting Player Inputs
+              Paddle Position Data
             
           </span>
         </div>
@@ -405,20 +405,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-    <a href="./" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../collectInput/" class="md-nav__link">
       Collecting Player Inputs
     </a>
-    
   </li>
 
         
@@ -474,11 +465,56 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../paddlePosition/" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Paddle Position Data
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
       Paddle Position Data
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#importing" class="md-nav__link">
+    Importing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exporting" class="md-nav__link">
+    Exporting
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -661,6 +697,28 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#importing" class="md-nav__link">
+    Importing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exporting" class="md-nav__link">
+    Exporting
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -672,32 +730,81 @@
               
                 
                 
-                <h1 id="collecting-player-inputs">Collecting Player Inputs<a class="headerlink" href="#collecting-player-inputs" title="Permanent link">&para;</a></h1>
-<blockquote>
-<blockquote>
-<p><code>OnCollectLocalPlayerInputs</code> 
-Called every frame to collect the inputs of the local player.</p>
-</blockquote>
-</blockquote>
-<p>In <code>OnCollectLocalPlayerInputs</code>, you read player inputs from the Unity <code>Input</code> class and pass it to <code>FrameSyncInput</code>.</p>
-<p>Go to <code>ProjectSettings-&gt;Input manager</code> and add a new input <code>Vertical1</code>. You can <strong>Right-Click</strong> the input <code>Vertical</code> and <code>Duplicate Array Element</code> to copy the input settings. Set <code>Negative Button</code> to <code>down</code> and <code>Positive Button</code> to <code>up</code> for the new input.</p>
-<p><img alt="img" src="../../../assets/tutorial/InputSettings_Pong.PNG" width="720" /></p>
+                <h1 id="paddle-position-data">Paddle Position Data<a class="headerlink" href="#paddle-position-data" title="Permanent link">&para;</a></h1>
+<p>Next, you'll export the paddle position data. The paddle position should be exported and uploaded to the game server for validation.</p>
+<p>Add a new script called <code>PaddlePositionData</code> to the <code>Paddle</code> GameObject. </p>
+<p>Replace the content of the script with the following. Note that the <code>PaddlePositionData</code> implements the <code>IFrameSyncData</code> interface.</p>
 <div class="tabbed-set" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">C#</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnCollectLocalPlayerInputs</span><span class="p">(</span><span class="n">SWFrameSyncInput</span> <span class="n">input</span><span class="p">,</span> <span class="n">SWFrameSyncGame</span> <span class="n">game</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="c1">// 1</span>
-    <span class="n">input</span><span class="p">.</span><span class="n">SetFloatForPlayer</span><span class="p">(</span><span class="s">&quot;y&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">Fix64</span><span class="p">)</span><span class="n">Input</span><span class="p">.</span><span class="n">GetAxis</span><span class="p">(</span><span class="s">&quot;Vertical&quot;</span><span class="p">),</span> <span class="n">player1</span><span class="p">);</span>
-    <span class="n">input</span><span class="p">.</span><span class="n">SetTriggerForPlayer</span><span class="p">(</span><span class="s">&quot;ready&quot;</span><span class="p">,</span> <span class="n">Input</span><span class="p">.</span><span class="n">GetKeyUp</span><span class="p">(</span><span class="n">KeyCode</span><span class="p">.</span><span class="n">G</span><span class="p">),</span> <span class="n">player1</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="k">using</span> <span class="nn">UnityEngine</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">SWNetwork.FrameSync</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">SWNetwork.Core</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Parallel</span><span class="p">;</span>
 
-    <span class="c1">// 2</span>
-    <span class="n">input</span><span class="p">.</span><span class="n">SetFloatForPlayer</span><span class="p">(</span><span class="s">&quot;y&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">Fix64</span><span class="p">)</span><span class="n">Input</span><span class="p">.</span><span class="n">GetAxis</span><span class="p">(</span><span class="s">&quot;Vertical1&quot;</span><span class="p">),</span> <span class="n">player2</span><span class="p">);</span>
-    <span class="n">input</span><span class="p">.</span><span class="n">SetTriggerForPlayer</span><span class="p">(</span><span class="s">&quot;ready&quot;</span><span class="p">,</span> <span class="n">Input</span><span class="p">.</span><span class="n">GetKeyUp</span><span class="p">(</span><span class="n">KeyCode</span><span class="p">.</span><span class="n">H</span><span class="p">),</span> <span class="n">player2</span><span class="p">);</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">PaddlePositionData</span> <span class="p">:</span> <span class="n">MonoBehaviour</span><span class="p">,</span> <span class="n">IFrameSyncData</span>
+<span class="p">{</span>
+    <span class="c1">// reference to the PaddleOwnerData component</span>
+    <span class="n">ParallelTransform</span> <span class="n">parallelTransform</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">Awake</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">parallelTransform</span> <span class="p">=</span> <span class="n">GetComponent</span><span class="p">&lt;</span><span class="n">ParallelTransform</span><span class="p">&gt;();</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">FrameSyncDataInitialize</span><span class="p">(</span><span class="n">SWFrameSyncGame</span> <span class="n">game</span><span class="p">)</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">Import</span><span class="p">(</span><span class="n">SWBytes</span> <span class="n">buffer</span><span class="p">)</span>
+    <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">Export</span><span class="p">(</span><span class="n">SWBytes</span> <span class="n">buffer</span><span class="p">)</span>
+    <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">ExportDebugInfo</span><span class="p">(</span><span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;</span> <span class="n">debugDictionary</span><span class="p">)</span>
+    <span class="p">{</span>
+    <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 </div>
 </div>
-<p>In <code>// 1</code>, player1 uses <code>w</code> and <code>s</code> to move and uses <code>g</code> to trigger the <code>ready</code> input.</p>
-<p>In <code>// 2</code>, player2 uses <code>up arrow</code> and <code>down arrow</code> to move and uses <code>h</code> to trigger the <code>ready</code> input.</p>
+<h2 id="importing">Importing<a class="headerlink" href="#importing" title="Permanent link">&para;</a></h2>
+<p>Add the following to the <code>Import</code> methods.</p>
+<div class="tabbed-set" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">C#</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="k">public</span> <span class="k">void</span> <span class="nf">Import</span><span class="p">(</span><span class="n">SWBytes</span> <span class="n">buffer</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// 1</span>
+    <span class="kt">long</span> <span class="n">y</span> <span class="p">=</span> <span class="n">buffer</span><span class="p">.</span><span class="n">PopLong</span><span class="p">();</span>
+    <span class="n">Fix64</span> <span class="n">fy</span> <span class="p">=</span> <span class="n">Fix64</span><span class="p">.</span><span class="n">FromRaw</span><span class="p">(</span><span class="n">y</span><span class="p">);</span>
+
+    <span class="c1">// 2</span>
+    <span class="n">parallelTransform</span><span class="p">.</span><span class="n">position</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Fix64Vec3</span><span class="p">(</span>
+                                        <span class="n">parallelTransform</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> 
+                                        <span class="n">fy</span><span class="p">,</span> 
+                                        <span class="n">parallelTransform</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">z</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+<p>In <code>// 1</code>, you pop the <code>y</code> position value from the buffer.</p>
+<p>In <code>// 2</code>, you restore the paddle position to the <code>y</code> position value.</p>
+<h2 id="exporting">Exporting<a class="headerlink" href="#exporting" title="Permanent link">&para;</a></h2>
+<p>Add the following to the <code>Export</code> methods.</p>
+<div class="tabbed-set" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">C#</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="k">public</span> <span class="k">void</span> <span class="nf">Export</span><span class="p">(</span><span class="n">SWBytes</span> <span class="n">buffer</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// 1</span>
+    <span class="n">buffer</span><span class="p">.</span><span class="n">Push</span><span class="p">(</span><span class="n">parallelTransform</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">y</span><span class="p">.</span><span class="n">Raw</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+<p>In <code>// 1</code>, you push the <code>y</code> position value to the buffer.</p>
+<details class="info" open="open"><summary>Info</summary><p>The <code>ExportDebugInfo</code> method is left empty. It is only used when you are debugging the game with a local dev server.</p>
+</details>
                 
               
               
@@ -716,7 +823,7 @@ Called every frame to collect the inputs of the local player.</p>
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../configGame/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../paddleMovement/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -725,19 +832,19 @@ Called every frame to collect the inputs of the local player.</p>
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Configuring FrameSyncGame
+                Paddle Movement
               </div>
             </div>
           </a>
         
         
-          <a href="../completeOfflineAgent/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../ballManager/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Complete Offline FrameSyncAgent
+                Ball Manager
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">

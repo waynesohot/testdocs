@@ -357,6 +357,18 @@
           
           
 
+
+  <li class="md-nav__item">
+    <a href="../parallel2d/" class="md-nav__link">
+      Physics 2D
+    </a>
+  </li>
+
+        
+          
+          
+          
+
   
 
 
@@ -447,6 +459,66 @@
   <li class="md-nav__item">
     <a href="../completeOfflineAgent/" class="md-nav__link">
       Complete Offline FrameSyncAgent
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../staticFrameSyncBehaviour/" class="md-nav__link">
+      StaticFrameSyncBehaviour
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../paddleOwner/" class="md-nav__link">
+      Paddle Owner
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../paddleMovement/" class="md-nav__link">
+      Paddle Movement
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../paddlePosition/" class="md-nav__link">
+      Paddle Position Data
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ballManager/" class="md-nav__link">
+      Ball Manager
     </a>
   </li>
 
@@ -645,9 +717,8 @@
                 
                 
                 <h1 id="creating-framesyncagent">Creating FrameSyncAgent<a class="headerlink" href="#creating-framesyncagent" title="Permanent link">&para;</a></h1>
-<p>For your first step, you will create an empty GameObject to house your customized <a href="../../../frameSync/importantClass/frameSyncAgent/">FrameSyncAgent</a>. </p>
-<p><img alt="img" src="../../../assets/tutorial/EmptyGameObject_Pong.PNG" width="330" />
-<img alt="img" src="../../../assets/tutorial/MyFrameSyncAgent_Pong.PNG" width="330" /></p>
+<p>You will create an empty GameObject to house your customized <a href="../../../frameSync/importantClass/frameSyncAgent/">FrameSyncAgent</a>. </p>
+<p><img alt="img" src="../../../assets/tutorial/MyFrameSyncAgent_Pong.PNG" width="720" /></p>
 <h2 id="myframesyncagent">MyFrameSyncAgent<a class="headerlink" href="#myframesyncagent" title="Permanent link">&para;</a></h2>
 <p>Next, create a new script <code>MyFrameSyncAgent</code> and attach it to the empty GameObject by selecting <strong>Add Componnet</strong>. </p>
 <p>Remove the <code>Start()</code> and <code>Update()</code> methods and add the following to the <code>MyFrameSyncAgent</code> script.</p>
@@ -661,6 +732,9 @@
     <span class="c1">// offline players</span>
     <span class="k">public</span> <span class="n">SWFrameSyncPlayer</span> <span class="n">player1</span><span class="p">;</span>
     <span class="k">public</span> <span class="n">SWFrameSyncPlayer</span> <span class="n">player2</span><span class="p">;</span>
+
+    <span class="c1">// physics controller of the scene</span>
+    <span class="n">ParallelPhysicsController2D</span> <span class="n">parallelPhysics</span><span class="p">;</span>
 
     <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnFrameSyncEngineCreated</span><span class="p">(</span><span class="n">SWFrameSyncEngine</span> <span class="n">engine</span><span class="p">)</span>
     <span class="p">{</span>
@@ -698,7 +772,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../overview/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../parallel2d/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -707,7 +781,7 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Overview
+                Physics 2D
               </div>
             </div>
           </a>
