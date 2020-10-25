@@ -6,11 +6,17 @@ nav:
   - Tutorial:
     - Pong Game:
       - Overview: tutorial/pong/overview.md
+      - Physics 2D: tutorial/pong/parallel2d.md
       - Creating FrameSyncAgent: tutorial/pong/createAgent.md
       - Configuring FrameSyncEngine: tutorial/pong/configEngine.md
       - Configuring FrameSyncGame: tutorial/pong/configGame.md
       - Collecting Player Inputs: tutorial/pong/collectInput.md
       - Complete Offline FrameSyncAgent: tutorial/pong/completeOfflineAgent.md
+      - StaticFrameSyncBehaviour: tutorial/pong/staticFrameSyncBehaviour.md
+      - Paddle Owner: tutorial/pong/paddleOwner.md
+      - Paddle Movement: tutorial/pong/paddleMovement.md
+      - Paddle Position Data: tutorial/pong/paddlePosition.md
+      - Ball Manager: tutorial/pong/ballManager.md
   - FrameSync:
     - Important Classes:
       - FrameSyncAgent: frameSync/importantClass/frameSyncAgent.md

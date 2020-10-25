@@ -1,9 +1,8 @@
 # Creating FrameSyncAgent 
 
-For your first step, you will create an empty GameObject to house your customized [FrameSyncAgent][1]. 
+You will create an empty GameObject to house your customized [FrameSyncAgent][1]. 
 
-![img](./../../assets/tutorial/EmptyGameObject_Pong.PNG){: width=330 }
-![img](./../../assets/tutorial/MyFrameSyncAgent_Pong.PNG){: width=330 }
+![img](./../../assets/tutorial/MyFrameSyncAgent_Pong.PNG){: width=720 }
 
 ## MyFrameSyncAgent
 
@@ -22,6 +21,9 @@ Remove the `Start()` and `Update()` methods and add the following to the `MyFram
         // offline players
         public SWFrameSyncPlayer player1;
         public SWFrameSyncPlayer player2;
+
+        // physics controller of the scene
+        ParallelPhysicsController2D parallelPhysics;
 
         public override void OnFrameSyncEngineCreated(SWFrameSyncEngine engine)
         {

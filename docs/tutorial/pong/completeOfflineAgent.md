@@ -16,14 +16,19 @@ The MyFrameSyncAgent.cs script should look like.
 
     public class MyFrameSyncAgent : FrameSyncAgent
     {
+        // offline players
         public SWFrameSyncPlayer player1;
         public SWFrameSyncPlayer player2;
+
+        // physics controller of the scene
+        ParallelPhysicsController2D parallelPhysics;
 
         public override void OnFrameSyncEngineCreated(SWFrameSyncEngine engine)
         {
             // 1
             SWFrameSyncInputSetting[] inputSettings = new SWFrameSyncInputSetting[2];
 
+            // 2
             inputSettings[0] = SWFrameSyncInputSetting.CompressedFloatInput(
                                                                 "y",
                                                                 Fix64.FromDivision(-1, 1),
@@ -31,10 +36,24 @@ The MyFrameSyncAgent.cs script should look like.
                                                                 Fix64.FromDivision(1, 10),
                                                                 Fix64.zero);
 
+            // 3
             inputSettings[1] = SWFrameSyncInputSetting.TriggerInput("ready");
 
+            // 4
             SWFrameSyncInputConfig inputConfig = new SWFrameSyncInputConfig(inputSettings);
             engine.SetFrameSyncInputConfig(inputConfig);
+
+            // 5
+            parallelPhysics = FindObjectOfType<ParallelPhysicsController2D>();
+            parallelPhysics.autoUpdate = false;
+
+            engine.OnEngineWillSimulateEvent += FrameSyncEngineWillSimulate;
+        }
+
+        void FrameSyncEngineWillSimulate()
+        {
+            // 6
+            parallelPhysics.Step(FrameSyncTime.fixedDeltaTime);
         }
 
         public override void OnFrameSyncGameCreated(SWFrameSyncGame game, SWFrameSyncReplay replay)
@@ -66,4 +85,5 @@ The MyFrameSyncAgent.cs script should look like.
             input.SetTriggerForPlayer("ready", Input.GetKeyUp(KeyCode.H), player2);
         }
     }
+
     ```

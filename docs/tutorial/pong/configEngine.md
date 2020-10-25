@@ -25,6 +25,18 @@ In `OnFrameSyncEngineCreated`, you tell the `FrameSyncEngine` what the inputs ar
         // 4
         SWFrameSyncInputConfig inputConfig = new SWFrameSyncInputConfig(inputSettings);
         engine.SetFrameSyncInputConfig(inputConfig);
+
+        // 5
+        parallelPhysics = FindObjectOfType<ParallelPhysicsController2D>();
+        parallelPhysics.autoUpdate = false;
+
+        engine.OnEngineWillSimulateEvent += FrameSyncEngineWillSimulate;
+    }
+
+    void FrameSyncEngineWillSimulate()
+    {
+        // 6
+        parallelPhysics.Step(FrameSyncTime.fixedDeltaTime);
     }
     ```
 In `// 1`, you create an array of input settings, the game uses 2 inputs, so the array size is 2.
@@ -34,5 +46,9 @@ In `// 2`, the first input is a `CompressedFloatInput`. it contains the informat
 In `// 3`, the second input is a `TriggerInput`, players will trigger this input when they are ready to play the game.
 
 In `// 4`, you use the input settings array to create an `inputConfig` and you pass it to the `FrameSyncEngine` using the `SetFrameSyncInputConfig` method.
+
+In `// 5`, you find the ParallelPhysicsController of the scene and subscribe to the OnEngineWillSimulateEvent.
+
+In `// 6`, you simulate physics manually in the OnEngineWillSimulate event handler.
 
 [1]: ../../frameSync/importantClass/frameSyncAgent.md
