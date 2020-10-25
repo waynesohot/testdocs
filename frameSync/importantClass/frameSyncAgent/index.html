@@ -415,18 +415,6 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../tutorial/pong/completeOfflineAgent/" class="md-nav__link">
-      Complete Offline FrameSyncAgent
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
     <a href="../../../tutorial/pong/staticFrameSyncBehaviour/" class="md-nav__link">
       StaticFrameSyncBehaviour
     </a>
@@ -779,17 +767,17 @@
 
 <span class="k">public</span> <span class="k">class</span> <span class="nc">MyFrameSyncAgent</span> <span class="p">:</span> <span class="n">FrameSyncAgent</span>
 <span class="p">{</span>
-    <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnFrameSyncEngineCreated</span><span class="p">(</span><span class="n">SWFrameSyncEngine</span> <span class="n">engine</span><span class="p">)</span>
+    <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnFrameSyncEngineCreated</span><span class="p">(</span><span class="n">FrameSyncEngine</span> <span class="n">engine</span><span class="p">)</span>
     <span class="p">{</span>
 
     <span class="p">}</span>
 
-    <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnFrameSyncGameCreated</span><span class="p">(</span><span class="n">SWFrameSyncGame</span> <span class="n">game</span><span class="p">,</span> <span class="n">SWFrameSyncReplay</span> <span class="n">replay</span><span class="p">)</span>
+    <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnFrameSyncGameCreated</span><span class="p">(</span><span class="n">FrameSyncGame</span> <span class="n">game</span><span class="p">,</span> <span class="n">FrameSyncReplay</span> <span class="n">replay</span><span class="p">)</span>
     <span class="p">{</span>
 
     <span class="p">}</span>
 
-    <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnCollectLocalPlayerInputs</span><span class="p">(</span><span class="n">SWFrameSyncInput</span> <span class="n">input</span><span class="p">,</span> <span class="n">SWFrameSyncGame</span> <span class="n">game</span><span class="p">)</span>
+    <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnCollectLocalPlayerInputs</span><span class="p">(</span><span class="n">FrameSyncInput</span> <span class="n">input</span><span class="p">,</span> <span class="n">FrameSyncGame</span> <span class="n">game</span><span class="p">)</span>
     <span class="p">{</span>
 
     <span class="p">}</span>

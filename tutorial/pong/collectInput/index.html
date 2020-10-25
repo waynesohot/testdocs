@@ -428,18 +428,6 @@
 
 
   <li class="md-nav__item">
-    <a href="../completeOfflineAgent/" class="md-nav__link">
-      Complete Offline FrameSyncAgent
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
     <a href="../staticFrameSyncBehaviour/" class="md-nav__link">
       StaticFrameSyncBehaviour
     </a>
@@ -683,7 +671,7 @@ Called every frame to collect the inputs of the local player.</p>
 <p>Go to <code>ProjectSettings-&gt;Input manager</code> and add a new input <code>Vertical1</code>. You can <strong>Right-Click</strong> the input <code>Vertical</code> and <code>Duplicate Array Element</code> to copy the input settings. Set <code>Negative Button</code> to <code>down</code> and <code>Positive Button</code> to <code>up</code> for the new input.</p>
 <p><img alt="img" src="../../../assets/tutorial/InputSettings_Pong.PNG" width="720" /></p>
 <div class="tabbed-set" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">C#</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnCollectLocalPlayerInputs</span><span class="p">(</span><span class="n">SWFrameSyncInput</span> <span class="n">input</span><span class="p">,</span> <span class="n">SWFrameSyncGame</span> <span class="n">game</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnCollectLocalPlayerInputs</span><span class="p">(</span><span class="n">FrameSyncInput</span> <span class="n">input</span><span class="p">,</span> <span class="n">FrameSyncGame</span> <span class="n">game</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="c1">// 1</span>
     <span class="n">input</span><span class="p">.</span><span class="n">SetFloatForPlayer</span><span class="p">(</span><span class="s">&quot;y&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">Fix64</span><span class="p">)</span><span class="n">Input</span><span class="p">.</span><span class="n">GetAxis</span><span class="p">(</span><span class="s">&quot;Vertical&quot;</span><span class="p">),</span> <span class="n">player1</span><span class="p">);</span>
@@ -731,13 +719,13 @@ Called every frame to collect the inputs of the local player.</p>
           </a>
         
         
-          <a href="../completeOfflineAgent/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../staticFrameSyncBehaviour/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Complete Offline FrameSyncAgent
+                StaticFrameSyncBehaviour
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">

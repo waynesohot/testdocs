@@ -419,18 +419,6 @@
 
 
   <li class="md-nav__item">
-    <a href="../completeOfflineAgent/" class="md-nav__link">
-      Complete Offline FrameSyncAgent
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
     <a href="../staticFrameSyncBehaviour/" class="md-nav__link">
       StaticFrameSyncBehaviour
     </a>
@@ -815,11 +803,11 @@
         <span class="n">parallelRigidbody2D</span> <span class="p">=</span> <span class="n">GetComponent</span><span class="p">&lt;</span><span class="n">ParallelRigidbody2D</span><span class="p">&gt;();</span>
     <span class="p">}</span>
 
-    <span class="k">public</span> <span class="k">void</span> <span class="nf">FrameSyncUpdate</span><span class="p">(</span><span class="n">SWFrameSyncInput</span> <span class="n">input</span><span class="p">,</span> <span class="n">SWFrameSyncUpdateType</span> <span class="n">frameSyncUpdateType</span><span class="p">)</span>
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">FrameSyncUpdate</span><span class="p">(</span><span class="n">FrameSyncInput</span> <span class="n">input</span><span class="p">,</span> <span class="n">FrameSyncUpdateType</span> <span class="n">frameSyncUpdateType</span><span class="p">)</span>
     <span class="p">{</span>
     <span class="p">}</span>
 
-    <span class="k">public</span> <span class="k">void</span> <span class="nf">FrameSyncDataInitialize</span><span class="p">(</span><span class="n">SWFrameSyncGame</span> <span class="n">game</span><span class="p">)</span>
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">FrameSyncDataInitialize</span><span class="p">(</span><span class="n">FrameSyncGame</span> <span class="n">game</span><span class="p">)</span>
     <span class="p">{</span>
     <span class="p">}</span>
 
@@ -881,7 +869,7 @@
 <h3 id="handle-player-ready-input">Handle player ready input<a class="headerlink" href="#handle-player-ready-input" title="Permanent link">&para;</a></h3>
 <p>Add the following to the <code>PaddleUpdate</code> script</p>
 <div class="tabbed-set" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">C#</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="k">public</span> <span class="k">void</span> <span class="nf">FrameSyncUpdate</span><span class="p">(</span><span class="n">SWFrameSyncInput</span> <span class="n">input</span><span class="p">,</span> <span class="n">SWFrameSyncUpdateType</span> <span class="n">frameSyncUpdateType</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">public</span> <span class="k">void</span> <span class="nf">FrameSyncUpdate</span><span class="p">(</span><span class="n">FrameSyncInput</span> <span class="n">input</span><span class="p">,</span> <span class="n">FrameSyncUpdateType</span> <span class="n">frameSyncUpdateType</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="c1">// 1</span>
     <span class="n">Fix64</span> <span class="n">y</span> <span class="p">=</span> <span class="n">input</span><span class="p">.</span><span class="n">GetFloatForPlayer</span><span class="p">(</span><span class="s">&quot;y&quot;</span><span class="p">,</span> <span class="n">ownerData</span><span class="p">.</span><span class="n">player</span><span class="p">);</span>
@@ -904,7 +892,7 @@
 <h2 id="boundary-check">Boundary Check<a class="headerlink" href="#boundary-check" title="Permanent link">&para;</a></h2>
 <p>Add the following to the <code>FrameSyncUpdate</code> method in the <code>BallManager</code> script.</p>
 <div class="tabbed-set" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">C#</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="k">public</span> <span class="k">void</span> <span class="nf">FrameSyncUpdate</span><span class="p">(</span><span class="n">SWFrameSyncInput</span> <span class="n">input</span><span class="p">,</span> <span class="n">SWFrameSyncUpdateType</span> <span class="n">frameSyncUpdateType</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">public</span> <span class="k">void</span> <span class="nf">FrameSyncUpdate</span><span class="p">(</span><span class="n">FrameSyncInput</span> <span class="n">input</span><span class="p">,</span> <span class="n">FrameSyncUpdateType</span> <span class="n">frameSyncUpdateType</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="c1">//check boundary</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">parallelTransform</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">x</span> <span class="p">&lt;</span> <span class="n">Fix64</span><span class="p">.</span><span class="n">FromDivision</span><span class="p">(-</span><span class="m">11</span><span class="p">,</span> <span class="m">1</span><span class="p">))</span>

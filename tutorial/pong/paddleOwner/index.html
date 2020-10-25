@@ -419,18 +419,6 @@
 
 
   <li class="md-nav__item">
-    <a href="../completeOfflineAgent/" class="md-nav__link">
-      Complete Offline FrameSyncAgent
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
     <a href="../staticFrameSyncBehaviour/" class="md-nav__link">
       StaticFrameSyncBehaviour
     </a>
@@ -739,9 +727,9 @@
 
     <span class="c1">// reference to the FrameSyncPlayer</span>
     <span class="c1">// set when initializing the FrameSyncData</span>
-    <span class="n">SWFrameSyncPlayer</span> <span class="n">_player</span><span class="p">;</span>
+    <span class="n">FrameSyncPlayer</span> <span class="n">_player</span><span class="p">;</span>
 
-    <span class="k">public</span> <span class="k">void</span> <span class="nf">FrameSyncDataInitialize</span><span class="p">(</span><span class="n">SWFrameSyncGame</span> <span class="n">game</span><span class="p">)</span>
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">FrameSyncDataInitialize</span><span class="p">(</span><span class="n">FrameSyncGame</span> <span class="n">game</span><span class="p">)</span>
     <span class="p">{</span>
 
     <span class="p">}</span>
@@ -767,7 +755,7 @@
 <h2 id="framesyncdatainitialize">FrameSyncDataInitialize<a class="headerlink" href="#framesyncdatainitialize" title="Permanent link">&para;</a></h2>
 <p>The <code>FrameSyncDataInitialize</code> method is called before the first <code>FrameSyncUpdate()</code> call to the GameObject. You'll implement the logic to assign paddles to their owners in it.</p>
 <div class="tabbed-set" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">C#</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="k">public</span> <span class="k">void</span> <span class="nf">FrameSyncDataInitialize</span><span class="p">(</span><span class="n">SWFrameSyncGame</span> <span class="n">game</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">public</span> <span class="k">void</span> <span class="nf">FrameSyncDataInitialize</span><span class="p">(</span><span class="n">FrameSyncGame</span> <span class="n">game</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="c1">// 1</span>
     <span class="n">MyGameSettings</span> <span class="n">gameSettings</span> <span class="p">=</span> <span class="n">game</span><span class="p">.</span><span class="n">userData</span> <span class="k">as</span> <span class="n">MyGameSettings</span><span class="p">;</span>

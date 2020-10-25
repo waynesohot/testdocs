@@ -428,18 +428,6 @@
 
 
   <li class="md-nav__item">
-    <a href="../completeOfflineAgent/" class="md-nav__link">
-      Complete Offline FrameSyncAgent
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
     <a href="../staticFrameSyncBehaviour/" class="md-nav__link">
       StaticFrameSyncBehaviour
     </a>
@@ -693,10 +681,10 @@ Called after the <code>FrameSyncAgent</code> created its <code>FrameSyncGame</co
 <p>In online mode, game custom data is configured in the matchmaking stage before creating the <code>FrameSyncAgent</code>. </p>
 <p>For now, you will hardcode it to run the game offline.</p>
 <div class="tabbed-set" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">C#</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnFrameSyncGameCreated</span><span class="p">(</span><span class="n">SWFrameSyncGame</span> <span class="n">game</span><span class="p">,</span> <span class="n">SWFrameSyncReplay</span> <span class="n">replay</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnFrameSyncGameCreated</span><span class="p">(</span><span class="n">FrameSyncGame</span> <span class="n">game</span><span class="p">,</span> <span class="n">FrameSyncReplay</span> <span class="n">replay</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="c1">// 1</span>
-    <span class="n">game</span><span class="p">.</span><span class="n">type</span> <span class="p">=</span> <span class="n">SWFrameSyncGameType</span><span class="p">.</span><span class="n">Offline</span><span class="p">;</span>
+    <span class="n">game</span><span class="p">.</span><span class="n">type</span> <span class="p">=</span> <span class="n">FrameSyncGameType</span><span class="p">.</span><span class="n">Offline</span><span class="p">;</span>
 
     <span class="c1">// 2</span>
     <span class="n">player1</span> <span class="p">=</span> <span class="n">game</span><span class="p">.</span><span class="n">CreateOfflineGamePlayer</span><span class="p">();</span>
