@@ -26,9 +26,9 @@ Replace the content of the script with the following. Note that the `PaddleOwner
 
         // reference to the FrameSyncPlayer
         // set when initializing the FrameSyncData
-        SWFrameSyncPlayer _player;
+        FrameSyncPlayer _player;
 
-        public void FrameSyncDataInitialize(SWFrameSyncGame game)
+        public void FrameSyncDataInitialize(FrameSyncGame game)
         {
 
         }
@@ -56,7 +56,7 @@ The `FrameSyncDataInitialize` method is called before the first `FrameSyncUpdate
 
 === "C#"
     ``` c#
-    public void FrameSyncDataInitialize(SWFrameSyncGame game)
+    public void FrameSyncDataInitialize(FrameSyncGame game)
     {
         // 1
         MyGameSettings gameSettings = game.userData as MyGameSettings;

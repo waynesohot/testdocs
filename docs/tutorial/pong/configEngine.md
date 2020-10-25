@@ -1,18 +1,18 @@
 # Configuring the FrameSyncEngine
 
->> ``OnFrameSyncEngineCreated(SWFrameSyncEngine engine)`` Called after the `FrameSyncAgent` created its `FrameSyncEngine` in the ``Awake()`` method.
+>> ``OnFrameSyncEngineCreated(FrameSyncEngine engine)`` Called after the `FrameSyncAgent` created its `FrameSyncEngine` in the ``Awake()`` method.
 
 In `OnFrameSyncEngineCreated`, you tell the `FrameSyncEngine` what the inputs are used in your game. 
 
 === "C#"
     ``` c#
-    public override void OnFrameSyncEngineCreated(SWFrameSyncEngine engine)
+    public override void OnFrameSyncEngineCreated(FrameSyncEngine engine)
     {
         // 1
-        SWFrameSyncInputSetting[] inputSettings = new SWFrameSyncInputSetting[2];
+        FrameSyncInputSetting[] inputSettings = new FrameSyncInputSetting[2];
 
         // 2
-        inputSettings[0] = SWFrameSyncInputSetting.CompressedFloatInput(
+        inputSettings[0] = FrameSyncInputSetting.CompressedFloatInput(
                                                                "y", 
                                                                Fix64.FromDivision(-1, 1), 
                                                                Fix64.FromDivision(1, 1), 
@@ -20,10 +20,10 @@ In `OnFrameSyncEngineCreated`, you tell the `FrameSyncEngine` what the inputs ar
                                                                Fix64.zero);
 
         // 3
-        inputSettings[1] = SWFrameSyncInputSetting.TriggerInput("ready");
+        inputSettings[1] = FrameSyncInputSetting.TriggerInput("ready");
 
         // 4
-        SWFrameSyncInputConfig inputConfig = new SWFrameSyncInputConfig(inputSettings);
+        FrameSyncInputConfig inputConfig = new FrameSyncInputConfig(inputSettings);
         engine.SetFrameSyncInputConfig(inputConfig);
 
         // 5

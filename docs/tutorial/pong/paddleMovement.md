@@ -29,7 +29,7 @@ Replace the content of the script with the following. Note that the `PaddleUpdat
             parallelTransform = GetComponent<ParallelTransform>();
         }
 
-        public void FrameSyncUpdate(SWFrameSyncInput input, SWFrameSyncUpdateType frameSyncUpdateType)
+        public void FrameSyncUpdate(FrameSyncInput input, FrameSyncUpdateType frameSyncUpdateType)
         {
         }
     }
@@ -41,7 +41,7 @@ Add the following to the `FrameSyncUpdate` method.
 
 === "C#"
     ``` c#
-    public void FrameSyncUpdate(SWFrameSyncInput input, SWFrameSyncUpdateType frameSyncUpdateType)
+    public void FrameSyncUpdate(FrameSyncInput input, FrameSyncUpdateType frameSyncUpdateType)
     {
         // 1
         Fix64 y = input.GetFloatForPlayer("y", ownerData.player);

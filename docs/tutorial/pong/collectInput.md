@@ -11,7 +11,7 @@ Go to `ProjectSettings->Input manager` and add a new input `Vertical1`. You can 
 
 === "C#"
     ``` c#
-    public override void OnCollectLocalPlayerInputs(SWFrameSyncInput input, SWFrameSyncGame game)
+    public override void OnCollectLocalPlayerInputs(FrameSyncInput input, FrameSyncGame game)
     {
         // 1
         input.SetFloatForPlayer("y", (Fix64)Input.GetAxis("Vertical"), player1);

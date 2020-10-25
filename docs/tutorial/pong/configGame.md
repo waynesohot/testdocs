@@ -22,10 +22,10 @@ For now, you will hardcode it to run the game offline.
 
 === "C#"
     ``` c#
-    public override void OnFrameSyncGameCreated(SWFrameSyncGame game, SWFrameSyncReplay replay)
+    public override void OnFrameSyncGameCreated(FrameSyncGame game, FrameSyncReplay replay)
     {
         // 1
-        game.type = SWFrameSyncGameType.Offline;
+        game.type = FrameSyncGameType.Offline;
 
         // 2
         player1 = game.CreateOfflineGamePlayer();

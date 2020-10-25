@@ -19,23 +19,23 @@ Remove the `Start()` and `Update()` methods and add the following to the `MyFram
     public class MyFrameSyncAgent : FrameSyncAgent
     {
         // offline players
-        public SWFrameSyncPlayer player1;
-        public SWFrameSyncPlayer player2;
+        public FrameSyncPlayer player1;
+        public FrameSyncPlayer player2;
 
         // physics controller of the scene
         ParallelPhysicsController2D parallelPhysics;
 
-        public override void OnFrameSyncEngineCreated(SWFrameSyncEngine engine)
+        public override void OnFrameSyncEngineCreated(FrameSyncEngine engine)
         {
 
         }
 
-        public override void OnFrameSyncGameCreated(SWFrameSyncGame game, SWFrameSyncReplay replay)
+        public override void OnFrameSyncGameCreated(FrameSyncGame game, FrameSyncReplay replay)
         {
 
         }
 
-        public override void OnCollectLocalPlayerInputs(SWFrameSyncInput input, SWFrameSyncGame game)
+        public override void OnCollectLocalPlayerInputs(FrameSyncInput input, FrameSyncGame game)
         {
 
         }

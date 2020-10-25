@@ -36,11 +36,11 @@ Replace the content of the script with the following. Note that the `BallManager
             parallelRigidbody2D = GetComponent<ParallelRigidbody2D>();
         }
 
-        public void FrameSyncUpdate(SWFrameSyncInput input, SWFrameSyncUpdateType frameSyncUpdateType)
+        public void FrameSyncUpdate(FrameSyncInput input, FrameSyncUpdateType frameSyncUpdateType)
         {
         }
 
-        public void FrameSyncDataInitialize(SWFrameSyncGame game)
+        public void FrameSyncDataInitialize(FrameSyncGame game)
         {
         }
 
@@ -110,7 +110,7 @@ Add the following to the `PaddleUpdate` script
 
 === "C#"
     ``` c#
-    public void FrameSyncUpdate(SWFrameSyncInput input, SWFrameSyncUpdateType frameSyncUpdateType)
+    public void FrameSyncUpdate(FrameSyncInput input, FrameSyncUpdateType frameSyncUpdateType)
     {
         // 1
         Fix64 y = input.GetFloatForPlayer("y", ownerData.player);
@@ -136,7 +136,7 @@ Add the following to the `FrameSyncUpdate` method in the `BallManager` script.
 
 === "C#"
     ``` c#
-    public void FrameSyncUpdate(SWFrameSyncInput input, SWFrameSyncUpdateType frameSyncUpdateType)
+    public void FrameSyncUpdate(FrameSyncInput input, FrameSyncUpdateType frameSyncUpdateType)
     {
         //check boundary
         if (parallelTransform.position.x < Fix64.FromDivision(-11, 1))

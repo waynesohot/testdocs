@@ -24,7 +24,7 @@ Replace the content of the script with the following. Note that the `PaddlePosit
             parallelTransform = GetComponent<ParallelTransform>();
         }
 
-        public void FrameSyncDataInitialize(SWFrameSyncGame game)
+        public void FrameSyncDataInitialize(FrameSyncGame game)
         {
 
         }

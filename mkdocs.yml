@@ -11,7 +11,6 @@ nav:
       - Configuring FrameSyncEngine: tutorial/pong/configEngine.md
       - Configuring FrameSyncGame: tutorial/pong/configGame.md
       - Collecting Player Inputs: tutorial/pong/collectInput.md
-      - Complete Offline FrameSyncAgent: tutorial/pong/completeOfflineAgent.md
       - StaticFrameSyncBehaviour: tutorial/pong/staticFrameSyncBehaviour.md
       - Paddle Owner: tutorial/pong/paddleOwner.md
       - Paddle Movement: tutorial/pong/paddleMovement.md

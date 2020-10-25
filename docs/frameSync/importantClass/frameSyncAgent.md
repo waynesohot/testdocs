@@ -10,17 +10,17 @@ Example contents of a FrameSyncAgent subclass:
 
     public class MyFrameSyncAgent : FrameSyncAgent
     {
-        public override void OnFrameSyncEngineCreated(SWFrameSyncEngine engine)
+        public override void OnFrameSyncEngineCreated(FrameSyncEngine engine)
         {
 
         }
 
-        public override void OnFrameSyncGameCreated(SWFrameSyncGame game, SWFrameSyncReplay replay)
+        public override void OnFrameSyncGameCreated(FrameSyncGame game, FrameSyncReplay replay)
         {
 
         }
 
-        public override void OnCollectLocalPlayerInputs(SWFrameSyncInput input, SWFrameSyncGame game)
+        public override void OnCollectLocalPlayerInputs(FrameSyncInput input, FrameSyncGame game)
         {
 
         }
