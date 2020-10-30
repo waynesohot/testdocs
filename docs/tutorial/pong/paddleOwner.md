@@ -26,7 +26,9 @@ Replace the content of the script with the following. Note that the `PaddleOwner
 
         // reference to the FrameSyncPlayer
         // set when initializing the FrameSyncData
-        FrameSyncPlayer _player;
+        // made public so other component can get the own player
+        // through the PaddleOwnerData component
+        public FrameSyncPlayer player;
 
         public void FrameSyncDataInitialize(FrameSyncGame game)
         {

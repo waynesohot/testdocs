@@ -39,4 +39,14 @@ Walls   | Staic     | Do not move
 
 - Select the `Ball` and the `Paddle`s in the `Hierarchy` window and add `StaticFrameSyncBehaviour` to them by selecting `Add Component`->`Static Frame Sync Behaviour`.
 
+## Assign the StaticFrameSyncBehaviourID
+
+You need to assign different `StaticFrameSyncBehaviourID` to the `StaticFrameSyncBehaviour` in your scene. 
+
+Name                | StaticFrameSyncBehaviourID |
+--------------------| -------------------------- |
+Ball                | 1                          |
+Paddle for player 1 | 2                          |
+Paddle for player 2 | 3                          |
+
 ![img](./../../assets/tutorial/AddStaticFrameSync.PNG){: width=720 }

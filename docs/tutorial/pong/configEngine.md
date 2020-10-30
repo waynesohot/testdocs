@@ -30,25 +30,28 @@ In `OnFrameSyncEngineCreated`, you tell the `FrameSyncEngine` what the inputs ar
         parallelPhysics = FindObjectOfType<ParallelPhysicsController2D>();
         parallelPhysics.autoUpdate = false;
 
+        // 6
         engine.OnEngineWillSimulateEvent += FrameSyncEngineWillSimulate;
     }
 
     void FrameSyncEngineWillSimulate()
     {
-        // 6
+        // 7
         parallelPhysics.Step(FrameSyncTime.fixedDeltaTime);
     }
     ```
 In `// 1`, you create an array of input settings, the game uses 2 inputs, so the array size is 2.
 
-In `// 2`, the first input is a `CompressedFloatInput`. it contains the information of the vertical axes from the keyboard. you will feed player's input to it later when we implement the `OnCollectLocalPlayerInputs` method.
+In `// 2`, the first input is a `CompressedFloatInput`. it contains the information of the vertical axis from the keyboard. you will feed player's input to it later when we implement the `OnCollectLocalPlayerInputs` method.
 
 In `// 3`, the second input is a `TriggerInput`, players will trigger this input when they are ready to play the game.
 
 In `// 4`, you use the input settings array to create an `inputConfig` and you pass it to the `FrameSyncEngine` using the `SetFrameSyncInputConfig` method.
 
-In `// 5`, you find the ParallelPhysicsController of the scene and subscribe to the OnEngineWillSimulateEvent.
+In `// 5`, you find the `ParallelPhysicsController2D` object of the scene and disabled `autoUpdate`. You'll manually call the `Step()` method of the `ParallelPhysicsController2D` object to simulate the physics in your game.
 
-In `// 6`, you simulate physics manually in the OnEngineWillSimulate event handler.
+In `// 6`, you subscribe to the `OnEngineWillSimulateEvent`.
+
+In `// 7`, you simulate physics manually in the OnEngineWillSimulate event handler.
 
 [1]: ../../frameSync/importantClass/frameSyncAgent.md
