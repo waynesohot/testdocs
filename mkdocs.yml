@@ -16,7 +16,8 @@ nav:
       - Paddle Movement: tutorial/pong/paddleMovement.md
       - Paddle Position Data: tutorial/pong/paddlePosition.md
       - Ball Manager: tutorial/pong/ballManager.md
-      - Playing offline: tutorial/pong/offline.md
+      - Playing Offline: tutorial/pong/offline.md
+      - Debug Server: tutorial/pong/debugServer.md
   - FrameSync:
     - Important Classes:
       - FrameSyncAgent: frameSync/importantClass/frameSyncAgent.md
