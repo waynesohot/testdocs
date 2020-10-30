@@ -13,7 +13,7 @@
     
     
       
-        <title>Configuring FrameSyncEngine - FrameSync</title>
+        <title>Playing offline - FrameSync</title>
       
     
     
@@ -58,7 +58,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#configuring-the-framesyncengine" class="md-skip">
+        <a href="#playing-offline" class="md-skip">
           Skip to content
         </a>
       
@@ -88,7 +88,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              Configuring FrameSyncEngine
+              Playing offline
             
           </span>
         </div>
@@ -381,20 +381,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-    <a href="./" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../configEngine/" class="md-nav__link">
       Configuring FrameSyncEngine
     </a>
-    
   </li>
 
         
@@ -486,11 +477,20 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../offline/" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
       Playing offline
     </a>
+    
   </li>
 
         
@@ -672,57 +672,15 @@
               
                 
                 
-                <h1 id="configuring-the-framesyncengine">Configuring the FrameSyncEngine<a class="headerlink" href="#configuring-the-framesyncengine" title="Permanent link">&para;</a></h1>
-<blockquote>
-<blockquote>
-<p><code>OnFrameSyncEngineCreated(FrameSyncEngine engine)</code> Called after the <code>FrameSyncAgent</code> created its <code>FrameSyncEngine</code> in the <code>Awake()</code> method.</p>
-</blockquote>
-</blockquote>
-<p>In <code>OnFrameSyncEngineCreated</code>, you tell the <code>FrameSyncEngine</code> what the inputs are used in your game. </p>
-<div class="tabbed-set" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">C#</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnFrameSyncEngineCreated</span><span class="p">(</span><span class="n">FrameSyncEngine</span> <span class="n">engine</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="c1">// 1</span>
-    <span class="n">FrameSyncInputSetting</span><span class="p">[]</span> <span class="n">inputSettings</span> <span class="p">=</span> <span class="k">new</span> <span class="n">FrameSyncInputSetting</span><span class="p">[</span><span class="m">2</span><span class="p">];</span>
-
-    <span class="c1">// 2</span>
-    <span class="n">inputSettings</span><span class="p">[</span><span class="m">0</span><span class="p">]</span> <span class="p">=</span> <span class="n">FrameSyncInputSetting</span><span class="p">.</span><span class="n">CompressedFloatInput</span><span class="p">(</span>
-                                                           <span class="s">&quot;y&quot;</span><span class="p">,</span> 
-                                                           <span class="n">Fix64</span><span class="p">.</span><span class="n">FromDivision</span><span class="p">(-</span><span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">),</span> 
-                                                           <span class="n">Fix64</span><span class="p">.</span><span class="n">FromDivision</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">),</span> 
-                                                           <span class="n">Fix64</span><span class="p">.</span><span class="n">FromDivision</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">10</span><span class="p">),</span> 
-                                                           <span class="n">Fix64</span><span class="p">.</span><span class="n">zero</span><span class="p">);</span>
-
-    <span class="c1">// 3</span>
-    <span class="n">inputSettings</span><span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="p">=</span> <span class="n">FrameSyncInputSetting</span><span class="p">.</span><span class="n">TriggerInput</span><span class="p">(</span><span class="s">&quot;ready&quot;</span><span class="p">);</span>
-
-    <span class="c1">// 4</span>
-    <span class="n">FrameSyncInputConfig</span> <span class="n">inputConfig</span> <span class="p">=</span> <span class="k">new</span> <span class="n">FrameSyncInputConfig</span><span class="p">(</span><span class="n">inputSettings</span><span class="p">);</span>
-    <span class="n">engine</span><span class="p">.</span><span class="n">SetFrameSyncInputConfig</span><span class="p">(</span><span class="n">inputConfig</span><span class="p">);</span>
-
-    <span class="c1">// 5</span>
-    <span class="n">parallelPhysics</span> <span class="p">=</span> <span class="n">FindObjectOfType</span><span class="p">&lt;</span><span class="n">ParallelPhysicsController2D</span><span class="p">&gt;();</span>
-    <span class="n">parallelPhysics</span><span class="p">.</span><span class="n">autoUpdate</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
-
-    <span class="c1">// 6</span>
-    <span class="n">engine</span><span class="p">.</span><span class="n">OnEngineWillSimulateEvent</span> <span class="p">+=</span> <span class="n">FrameSyncEngineWillSimulate</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="k">void</span> <span class="nf">FrameSyncEngineWillSimulate</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="c1">// 7</span>
-    <span class="n">parallelPhysics</span><span class="p">.</span><span class="n">Step</span><span class="p">(</span><span class="n">FrameSyncTime</span><span class="p">.</span><span class="n">fixedDeltaTime</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>
-</div>
-</div>
-<p>In <code>// 1</code>, you create an array of input settings, the game uses 2 inputs, so the array size is 2.</p>
-<p>In <code>// 2</code>, the first input is a <code>CompressedFloatInput</code>. it contains the information of the vertical axis from the keyboard. you will feed player's input to it later when we implement the <code>OnCollectLocalPlayerInputs</code> method.</p>
-<p>In <code>// 3</code>, the second input is a <code>TriggerInput</code>, players will trigger this input when they are ready to play the game.</p>
-<p>In <code>// 4</code>, you use the input settings array to create an <code>inputConfig</code> and you pass it to the <code>FrameSyncEngine</code> using the <code>SetFrameSyncInputConfig</code> method.</p>
-<p>In <code>// 5</code>, you find the <code>ParallelPhysicsController2D</code> object of the scene and disabled <code>autoUpdate</code>. You'll manually call the <code>Step()</code> method of the <code>ParallelPhysicsController2D</code> object to simulate the physics in your game.</p>
-<p>In <code>// 6</code>, you subscribe to the <code>OnEngineWillSimulateEvent</code>.</p>
-<p>In <code>// 7</code>, you simulate physics manually in the OnEngineWillSimulate event handler.</p>
+                <h1 id="playing-offline">Playing Offline<a class="headerlink" href="#playing-offline" title="Permanent link">&para;</a></h1>
+<p>Before playing the game, you need to set the gravity of the game to zero. </p>
+<p>Select the <code>ParallelPhysicsController2D</code>component and setting its <code>Gravity</code> to <code>(0,0)</code>.</p>
+<p><img alt="img" src="../../../assets/tutorial/Gravity_Pong.png" width="720" /></p>
+<p>After that, you can remove the friction of the walls by selecting the <code>ParallelBoxCollider</code> components of the them and setting their <code>Friction</code> value to <code>0</code>. Also, you can set <code>Bounciness</code> value of the colliders in the scene to <code>1</code> to make them bouncy.</p>
+<p><img alt="img" src="../../../assets/tutorial/WallFriction_Pong.png" width="720" /></p>
+<p>Now, you are ready to play the game in the offline mode. Just hit play. You should be able to move the paddles with the <code>w</code>, <code>s</code> keys or with the arrow keys.</p>
+<p>To start the match, you can press <code>g</code> to make player1 ready, and press <code>h</code> to make player2 ready.</p>
+<p><img alt="img" src="../../../assets/tutorial/Offline_Pong.gif" width="720" /></p>
                 
               
               
@@ -741,7 +699,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../createAgent/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../ballManager/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -750,19 +708,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Creating FrameSyncAgent
+                Ball Manager
               </div>
             </div>
           </a>
         
         
-          <a href="../configGame/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../../frameSync/importantClass/frameSyncAgent/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Configuring FrameSyncGame
+                FrameSyncAgent
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">

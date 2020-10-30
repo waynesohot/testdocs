@@ -511,6 +511,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../offline/" class="md-nav__link">
+      Playing offline
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -727,7 +739,9 @@
 
     <span class="c1">// reference to the FrameSyncPlayer</span>
     <span class="c1">// set when initializing the FrameSyncData</span>
-    <span class="n">FrameSyncPlayer</span> <span class="n">_player</span><span class="p">;</span>
+    <span class="c1">// made public so other component can get the own player</span>
+    <span class="c1">// through the PaddleOwnerData component</span>
+    <span class="k">public</span> <span class="n">FrameSyncPlayer</span> <span class="n">player</span><span class="p">;</span>
 
     <span class="k">public</span> <span class="k">void</span> <span class="nf">FrameSyncDataInitialize</span><span class="p">(</span><span class="n">FrameSyncGame</span> <span class="n">game</span><span class="p">)</span>
     <span class="p">{</span>
