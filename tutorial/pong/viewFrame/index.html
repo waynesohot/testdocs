@@ -13,7 +13,7 @@
     
     
       
-        <title>Configuring FrameSyncGame - FrameSync</title>
+        <title>Frame Information - FrameSync</title>
       
     
     
@@ -58,7 +58,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#configuring-the-framesyncgame" class="md-skip">
+        <a href="#frame-information" class="md-skip">
           Skip to content
         </a>
       
@@ -88,7 +88,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              Configuring FrameSyncGame
+              Frame Information
             
           </span>
         </div>
@@ -393,20 +393,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-    <a href="./" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../configGame/" class="md-nav__link">
       Configuring FrameSyncGame
     </a>
-    
   </li>
 
         
@@ -546,11 +537,70 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../viewFrame/" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Frame Information
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
       Frame Information
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#export-frame-info-for-paddlepositiondata" class="md-nav__link">
+    Export frame info for PaddlePositionData
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#export-frame-info-for-paddleownerdata" class="md-nav__link">
+    Export frame info for PaddleOwnerData
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#export-frame-info-for-ballmanager" class="md-nav__link">
+    Export frame info for BallManager
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reset-the-debug-server" class="md-nav__link">
+    Reset the debug server
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -721,6 +771,42 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#export-frame-info-for-paddlepositiondata" class="md-nav__link">
+    Export frame info for PaddlePositionData
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#export-frame-info-for-paddleownerdata" class="md-nav__link">
+    Export frame info for PaddleOwnerData
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#export-frame-info-for-ballmanager" class="md-nav__link">
+    Export frame info for BallManager
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reset-the-debug-server" class="md-nav__link">
+    Reset the debug server
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -732,51 +818,53 @@
               
                 
                 
-                <h1 id="configuring-the-framesyncgame">Configuring the FrameSyncGame<a class="headerlink" href="#configuring-the-framesyncgame" title="Permanent link">&para;</a></h1>
-<blockquote>
-<blockquote>
-<p><code>OnFrameSyncGameCreated</code>
-Called after the <code>FrameSyncAgent</code> created its <code>FrameSyncGame</code> in the <code>Awake()</code> method.</p>
-</blockquote>
-</blockquote>
-<p>In <code>OnFrameSyncGameCreated</code>, you create the players and set the game custom data of your game.</p>
+                <h1 id="frame-information">Frame Information<a class="headerlink" href="#frame-information" title="Permanent link">&para;</a></h1>
+<p>The frame information is exported from the game clients and displayed on the debug server.</p>
+<p><img alt="img" src="../../../assets/tutorial/frame_Pong.png" width="720" /></p>
+<p>You can see in the screenshot that both player1's game and player2's game generated the same simulation result hash for frame 263. That means the simulation results are identical.</p>
+<p>In the <code>Input</code> tab, you can view the Input values used in the game clients for frame 263.</p>
+<p><img alt="img" src="../../../assets/tutorial/staticEmpty_Pong.png" width="720" /></p>
+<p>In the <code>Static Behaviours</code> tab, you can view the data of the static behaviours. There are no data displayed here at the moment because we left the <code>ExportDebugInfo</code> methods empty.</p>
+<p>Add the following to the <code>ExportDebugInfo</code> methods.</p>
+<h2 id="export-frame-info-for-paddlepositiondata">Export frame info for PaddlePositionData<a class="headerlink" href="#export-frame-info-for-paddlepositiondata" title="Permanent link">&para;</a></h2>
 <div class="tabbed-set" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">C#</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="k">public</span> <span class="k">class</span> <span class="nc">MyGameSettings</span>
+<div class="highlight"><pre><span></span><code><span class="k">public</span> <span class="k">void</span> <span class="nf">ExportDebugInfo</span><span class="p">(</span><span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;</span> <span class="n">debugDictionary</span><span class="p">)</span>
 <span class="p">{</span>
-    <span class="k">public</span> <span class="kt">byte</span> <span class="n">player1ID</span><span class="p">;</span>
-    <span class="k">public</span> <span class="kt">byte</span> <span class="n">player2ID</span><span class="p">;</span>
+    <span class="n">debugDictionary</span><span class="p">[</span><span class="s">&quot;x&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="n">parallelTransform</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">x</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
+    <span class="n">debugDictionary</span><span class="p">[</span><span class="s">&quot;y&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="n">parallelTransform</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">y</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
 <span class="p">}</span>
 </code></pre></div>
 </div>
 </div>
-<p>You will use <code>MyGameSettings</code> as the custom data of your game. </p>
-<p>In online mode, game custom data is configured in the matchmaking stage before creating the <code>FrameSyncAgent</code>. </p>
-<p>For now, you will hardcode it to run the game offline.</p>
+<h2 id="export-frame-info-for-paddleownerdata">Export frame info for PaddleOwnerData<a class="headerlink" href="#export-frame-info-for-paddleownerdata" title="Permanent link">&para;</a></h2>
 <div class="tabbed-set" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">C#</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnFrameSyncGameCreated</span><span class="p">(</span><span class="n">FrameSyncGame</span> <span class="n">game</span><span class="p">,</span> <span class="n">FrameSyncReplay</span> <span class="n">replay</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">public</span> <span class="k">void</span> <span class="nf">ExportDebugInfo</span><span class="p">(</span><span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;</span> <span class="n">debugDictionary</span><span class="p">)</span>
 <span class="p">{</span>
-    <span class="c1">// 1</span>
-    <span class="n">game</span><span class="p">.</span><span class="n">type</span> <span class="p">=</span> <span class="n">FrameSyncGameType</span><span class="p">.</span><span class="n">Offline</span><span class="p">;</span>
-
-    <span class="c1">// 2</span>
-    <span class="n">player1</span> <span class="p">=</span> <span class="n">game</span><span class="p">.</span><span class="n">CreateOfflineGamePlayer</span><span class="p">();</span>
-    <span class="n">player2</span> <span class="p">=</span> <span class="n">game</span><span class="p">.</span><span class="n">CreateOfflineGamePlayer</span><span class="p">();</span>
-
-    <span class="c1">// 3</span>
-    <span class="n">MyGameSettings</span> <span class="n">gameSettings</span> <span class="p">=</span> <span class="k">new</span> <span class="n">MyGameSettings</span><span class="p">();</span>
-    <span class="n">gameSettings</span><span class="p">.</span><span class="n">player1ID</span> <span class="p">=</span> <span class="n">player1</span><span class="p">.</span><span class="n">PlayerID</span><span class="p">;</span>
-    <span class="n">gameSettings</span><span class="p">.</span><span class="n">player2ID</span> <span class="p">=</span> <span class="n">player2</span><span class="p">.</span><span class="n">PlayerID</span><span class="p">;</span>
-
-    <span class="c1">// 4</span>
-    <span class="n">game</span><span class="p">.</span><span class="n">userData</span> <span class="p">=</span> <span class="n">gameSettings</span><span class="p">;</span>
+    <span class="n">debugDictionary</span><span class="p">[</span><span class="s">&quot;owner&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="n">owner</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
 <span class="p">}</span>
 </code></pre></div>
 </div>
 </div>
-<p>In <code>// 1</code>, you set the game type to offline.</p>
-<p>In <code>// 2</code>, you created two offline players.</p>
-<p>In <code>// 3</code>, you created a <code>MyGameSettings</code> object and set its playerIDs to the offline players you just created in <code>// 2</code>.</p>
-<p>In <code>// 4</code>, you passed the <code>MyGameSettings</code> Object created in <code>// 3</code> to the <code>FrameSyncGame</code>.</p>
+<h2 id="export-frame-info-for-ballmanager">Export frame info for BallManager<a class="headerlink" href="#export-frame-info-for-ballmanager" title="Permanent link">&para;</a></h2>
+<div class="tabbed-set" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">C#</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="k">public</span> <span class="k">void</span> <span class="nf">ExportDebugInfo</span><span class="p">(</span><span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;</span> <span class="n">debugDictionary</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">debugDictionary</span><span class="p">[</span><span class="s">&quot;player1Ready&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="n">player1Ready</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
+    <span class="n">debugDictionary</span><span class="p">[</span><span class="s">&quot;player2Ready&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="n">player2Ready</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
+    <span class="n">debugDictionary</span><span class="p">[</span><span class="s">&quot;player1Score&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="n">player1Score</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
+    <span class="n">debugDictionary</span><span class="p">[</span><span class="s">&quot;player2Score&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="n">player2Score</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
+    <span class="n">debugDictionary</span><span class="p">[</span><span class="s">&quot;ballPosition&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="n">parallelTransform</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
+    <span class="n">debugDictionary</span><span class="p">[</span><span class="s">&quot;Velocity&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="n">parallelRigidbody2D</span><span class="p">.</span><span class="n">LinearVelocity</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
+    <span class="n">debugDictionary</span><span class="p">[</span><span class="s">&quot;AngularVelocity&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="n">parallelRigidbody2D</span><span class="p">.</span><span class="n">AngularVelocity</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+<h2 id="reset-the-debug-server">Reset the debug server<a class="headerlink" href="#reset-the-debug-server" title="Permanent link">&para;</a></h2>
+<p>You need to click the <code>Reset Server</code> button at the top right corner of the debug server page to reset the debug server. It will clear the debug frame information for the last game and prepare the server for you to connect again.</p>
+<p><img alt="img" src="../../../assets/tutorial/reset_Pong.gif" width="720" /></p>
+<p>Build and play the game. You should see something like this in the <code>Static Behaviours</code> tab.</p>
+<p><img alt="img" src="../../../assets/tutorial/staticFilled_Pong.png" width="720" /></p>
                 
               
               
@@ -795,7 +883,7 @@ Called after the <code>FrameSyncAgent</code> created its <code>FrameSyncGame</co
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../configEngine/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../buildGame/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -804,19 +892,19 @@ Called after the <code>FrameSyncAgent</code> created its <code>FrameSyncGame</co
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Configuring FrameSyncEngine
+                Building the Game
               </div>
             </div>
           </a>
         
         
-          <a href="../collectInput/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../../frameSync/importantClass/frameSyncAgent/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Collecting Player Inputs
+                FrameSyncAgent
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">

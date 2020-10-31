@@ -13,7 +13,7 @@
     
     
       
-        <title>Configuring FrameSyncGame - FrameSync</title>
+        <title>Connecting to Debug Server - FrameSync</title>
       
     
     
@@ -58,7 +58,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#configuring-the-framesyncgame" class="md-skip">
+        <a href="#connecting-to-the-debug-server" class="md-skip">
           Skip to content
         </a>
       
@@ -88,7 +88,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              Configuring FrameSyncGame
+              Connecting to Debug Server
             
           </span>
         </div>
@@ -393,20 +393,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-    <a href="./" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../configGame/" class="md-nav__link">
       Configuring FrameSyncGame
     </a>
-    
   </li>
 
         
@@ -510,11 +501,63 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../connectToDebugServer/" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Connecting to Debug Server
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
       Connecting to Debug Server
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#start-scene" class="md-nav__link">
+    Start scene
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-ui-elements" class="md-nav__link">
+    Adding UI elements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mygameserverconnection" class="md-nav__link">
+    MyGameServerConnection
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -721,6 +764,35 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#start-scene" class="md-nav__link">
+    Start scene
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-ui-elements" class="md-nav__link">
+    Adding UI elements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mygameserverconnection" class="md-nav__link">
+    MyGameServerConnection
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -732,51 +804,97 @@
               
                 
                 
-                <h1 id="configuring-the-framesyncgame">Configuring the FrameSyncGame<a class="headerlink" href="#configuring-the-framesyncgame" title="Permanent link">&para;</a></h1>
-<blockquote>
-<blockquote>
-<p><code>OnFrameSyncGameCreated</code>
-Called after the <code>FrameSyncAgent</code> created its <code>FrameSyncGame</code> in the <code>Awake()</code> method.</p>
-</blockquote>
-</blockquote>
-<p>In <code>OnFrameSyncGameCreated</code>, you create the players and set the game custom data of your game.</p>
+                <h1 id="connecting-to-the-debug-server">Connecting to the Debug Server<a class="headerlink" href="#connecting-to-the-debug-server" title="Permanent link">&para;</a></h1>
+<h2 id="start-scene">Start scene<a class="headerlink" href="#start-scene" title="Permanent link">&para;</a></h2>
+<p>You'll create a new scene for creating the connection with the debug game server. </p>
+<p>Create a new scene and change its name to <code>Start</code> as it will be the first scene that players see when game starts.</p>
+<p>Open the Build Settings and add the <code>Start</code> scene to the build.</p>
+<p><img alt="img" src="../../../assets/tutorial/StartSceneBuildSettings_Pong.png" width="720" /></p>
+<h2 id="adding-ui-elements">Adding UI elements<a class="headerlink" href="#adding-ui-elements" title="Permanent link">&para;</a></h2>
+<p>You just need to add two UI elements for this game.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PlayerUIDInputField</td>
+<td>InputField</td>
+<td>To enter the playerUID</td>
+</tr>
+<tr>
+<td>ConnectButton</td>
+<td>Button</td>
+<td>To Start the connection</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="img" src="../../../assets/tutorial/StartUI_Pong.png" width="720" /></p>
+<h2 id="mygameserverconnection">MyGameServerConnection<a class="headerlink" href="#mygameserverconnection" title="Permanent link">&para;</a></h2>
+<p>Next, create a new empty GameObject and name it <code>MyGameServerConnection</code>.
+Create a new script <code>MyGameServerConnection.cs</code> and attach it to the <code>MyGameServerConnection</code> GameObject.</p>
+<p>Replace the code in the script with the following.</p>
 <div class="tabbed-set" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">C#</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="k">public</span> <span class="k">class</span> <span class="nc">MyGameSettings</span>
+<div class="highlight"><pre><span></span><code><span class="k">using</span> <span class="nn">SWNetwork.FrameSync</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">UnityEngine</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">UnityEngine.SceneManagement</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">UnityEngine.UI</span><span class="p">;</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">MyGameServerConnection</span> <span class="p">:</span> <span class="n">MonoBehaviour</span>
 <span class="p">{</span>
-    <span class="k">public</span> <span class="kt">byte</span> <span class="n">player1ID</span><span class="p">;</span>
-    <span class="k">public</span> <span class="kt">byte</span> <span class="n">player2ID</span><span class="p">;</span>
+    <span class="c1">/// &lt;summary&gt;</span>
+    <span class="c1">/// InputField for entering the playerUID</span>
+    <span class="c1">/// &lt;/summary&gt;</span>
+    <span class="k">public</span> <span class="n">InputField</span> <span class="n">playerUIDField</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">Connect</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="kt">string</span> <span class="n">playerUID</span> <span class="p">=</span> <span class="n">playerUIDField</span><span class="p">.</span><span class="n">text</span><span class="p">;</span>
+        <span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="err">$</span><span class="s">&quot;Connecting.. {playerUID}&quot;</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">playerUID</span> <span class="p">!=</span> <span class="k">null</span> <span class="p">&amp;&amp;</span> <span class="n">playerUID</span><span class="p">.</span><span class="n">Length</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="c1">// 1</span>
+            <span class="n">FrameSyncClient</span><span class="p">.</span><span class="n">InitDebugMode</span><span class="p">(</span><span class="n">playerUID</span><span class="p">,</span> <span class="m">2</span><span class="p">);</span>
+
+            <span class="c1">// 2</span>
+            <span class="n">FrameSyncClient</span><span class="p">.</span><span class="n">ConnectDebugServer</span><span class="p">(</span><span class="s">&quot;127.0.0.1&quot;</span><span class="p">,</span> <span class="n">ready</span> <span class="p">=&gt;</span>
+            <span class="p">{</span>
+                <span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="err">$</span><span class="s">&quot;OnClientReady {ready}&quot;</span><span class="p">);</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">ready</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="c1">// 3</span>
+                    <span class="n">SceneManager</span><span class="p">.</span><span class="n">LoadScene</span><span class="p">(</span><span class="s">&quot;Pong&quot;</span><span class="p">);</span>
+                <span class="p">}</span>
+            <span class="p">});</span>
+        <span class="p">}</span>
+        <span class="k">else</span>
+        <span class="p">{</span>
+            <span class="n">Debug</span><span class="p">.</span><span class="n">LogError</span><span class="p">(</span><span class="s">&quot;Please Enter a playerID&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 </div>
 </div>
-<p>You will use <code>MyGameSettings</code> as the custom data of your game. </p>
-<p>In online mode, game custom data is configured in the matchmaking stage before creating the <code>FrameSyncAgent</code>. </p>
-<p>For now, you will hardcode it to run the game offline.</p>
-<div class="tabbed-set" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">C#</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnFrameSyncGameCreated</span><span class="p">(</span><span class="n">FrameSyncGame</span> <span class="n">game</span><span class="p">,</span> <span class="n">FrameSyncReplay</span> <span class="n">replay</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="c1">// 1</span>
-    <span class="n">game</span><span class="p">.</span><span class="n">type</span> <span class="p">=</span> <span class="n">FrameSyncGameType</span><span class="p">.</span><span class="n">Offline</span><span class="p">;</span>
-
-    <span class="c1">// 2</span>
-    <span class="n">player1</span> <span class="p">=</span> <span class="n">game</span><span class="p">.</span><span class="n">CreateOfflineGamePlayer</span><span class="p">();</span>
-    <span class="n">player2</span> <span class="p">=</span> <span class="n">game</span><span class="p">.</span><span class="n">CreateOfflineGamePlayer</span><span class="p">();</span>
-
-    <span class="c1">// 3</span>
-    <span class="n">MyGameSettings</span> <span class="n">gameSettings</span> <span class="p">=</span> <span class="k">new</span> <span class="n">MyGameSettings</span><span class="p">();</span>
-    <span class="n">gameSettings</span><span class="p">.</span><span class="n">player1ID</span> <span class="p">=</span> <span class="n">player1</span><span class="p">.</span><span class="n">PlayerID</span><span class="p">;</span>
-    <span class="n">gameSettings</span><span class="p">.</span><span class="n">player2ID</span> <span class="p">=</span> <span class="n">player2</span><span class="p">.</span><span class="n">PlayerID</span><span class="p">;</span>
-
-    <span class="c1">// 4</span>
-    <span class="n">game</span><span class="p">.</span><span class="n">userData</span> <span class="p">=</span> <span class="n">gameSettings</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-</div>
-</div>
-<p>In <code>// 1</code>, you set the game type to offline.</p>
-<p>In <code>// 2</code>, you created two offline players.</p>
-<p>In <code>// 3</code>, you created a <code>MyGameSettings</code> object and set its playerIDs to the offline players you just created in <code>// 2</code>.</p>
-<p>In <code>// 4</code>, you passed the <code>MyGameSettings</code> Object created in <code>// 3</code> to the <code>FrameSyncGame</code>.</p>
+<p>In <code>// 1</code>, To test your game with the debug server. You used <code>InitDebugMode</code> method to initialize the <code>FrameSyncClient</code>. There are two players in the game, so you set the <code>playerCount</code> of the <code>FrameSyncClient</code> to 2.</p>
+<p>In <code>// 2</code>, you call the <code>ConnectToDebugServer</code> method to start the connection with the debug server on the local machine.</p>
+<p>In <code>// 3</code>, you load the <code>pong</code> scene if the connection is established.</p>
+<p>Next, you'll connect the UI elements and the script.</p>
+<ul>
+<li>Drag the <code>PlayerUIDInputField</code> to the <code>MyGameServerConnection</code> component.</li>
+</ul>
+<p><img alt="img" src="../../../assets/tutorial/StartInputField_Pong.png" width="720" /></p>
+<ul>
+<li>Select the <code>Connect()</code> method of the <code>MyGameServerConnection</code> component to handle the <code>OnClick</code> event of the connect button.</li>
+</ul>
+<p><img alt="img" src="../../../assets/tutorial/StartButton_Pong.png" width="720" /></p>
                 
               
               
@@ -795,7 +913,7 @@ Called after the <code>FrameSyncAgent</code> created its <code>FrameSyncGame</co
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../configEngine/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../debugServer/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -804,19 +922,19 @@ Called after the <code>FrameSyncAgent</code> created its <code>FrameSyncGame</co
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Configuring FrameSyncEngine
+                Debug Server
               </div>
             </div>
           </a>
         
         
-          <a href="../collectInput/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../online/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Collecting Player Inputs
+                Online FrameSyncAgent
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">

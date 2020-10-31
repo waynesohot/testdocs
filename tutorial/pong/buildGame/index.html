@@ -13,7 +13,7 @@
     
     
       
-        <title>Configuring FrameSyncGame - FrameSync</title>
+        <title>Building the Game - FrameSync</title>
       
     
     
@@ -58,7 +58,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#configuring-the-framesyncgame" class="md-skip">
+        <a href="#building-the-game" class="md-skip">
           Skip to content
         </a>
       
@@ -88,7 +88,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              Configuring FrameSyncGame
+              Building the Game
             
           </span>
         </div>
@@ -393,20 +393,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-    <a href="./" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../configGame/" class="md-nav__link">
       Configuring FrameSyncGame
     </a>
-    
   </li>
 
         
@@ -534,11 +525,63 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../buildGame/" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Building the Game
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
       Building the Game
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#64-bit-architecture" class="md-nav__link">
+    64-bit architecture
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#windowed-mode" class="md-nav__link">
+    Windowed mode
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entering-the-debug-playeruid" class="md-nav__link">
+    Entering the debug PlayerUID
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -721,6 +764,35 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#64-bit-architecture" class="md-nav__link">
+    64-bit architecture
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#windowed-mode" class="md-nav__link">
+    Windowed mode
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entering-the-debug-playeruid" class="md-nav__link">
+    Entering the debug PlayerUID
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -732,51 +804,20 @@
               
                 
                 
-                <h1 id="configuring-the-framesyncgame">Configuring the FrameSyncGame<a class="headerlink" href="#configuring-the-framesyncgame" title="Permanent link">&para;</a></h1>
-<blockquote>
-<blockquote>
-<p><code>OnFrameSyncGameCreated</code>
-Called after the <code>FrameSyncAgent</code> created its <code>FrameSyncGame</code> in the <code>Awake()</code> method.</p>
-</blockquote>
-</blockquote>
-<p>In <code>OnFrameSyncGameCreated</code>, you create the players and set the game custom data of your game.</p>
-<div class="tabbed-set" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">C#</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="k">public</span> <span class="k">class</span> <span class="nc">MyGameSettings</span>
-<span class="p">{</span>
-    <span class="k">public</span> <span class="kt">byte</span> <span class="n">player1ID</span><span class="p">;</span>
-    <span class="k">public</span> <span class="kt">byte</span> <span class="n">player2ID</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-</div>
-</div>
-<p>You will use <code>MyGameSettings</code> as the custom data of your game. </p>
-<p>In online mode, game custom data is configured in the matchmaking stage before creating the <code>FrameSyncAgent</code>. </p>
-<p>For now, you will hardcode it to run the game offline.</p>
-<div class="tabbed-set" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">C#</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnFrameSyncGameCreated</span><span class="p">(</span><span class="n">FrameSyncGame</span> <span class="n">game</span><span class="p">,</span> <span class="n">FrameSyncReplay</span> <span class="n">replay</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="c1">// 1</span>
-    <span class="n">game</span><span class="p">.</span><span class="n">type</span> <span class="p">=</span> <span class="n">FrameSyncGameType</span><span class="p">.</span><span class="n">Offline</span><span class="p">;</span>
-
-    <span class="c1">// 2</span>
-    <span class="n">player1</span> <span class="p">=</span> <span class="n">game</span><span class="p">.</span><span class="n">CreateOfflineGamePlayer</span><span class="p">();</span>
-    <span class="n">player2</span> <span class="p">=</span> <span class="n">game</span><span class="p">.</span><span class="n">CreateOfflineGamePlayer</span><span class="p">();</span>
-
-    <span class="c1">// 3</span>
-    <span class="n">MyGameSettings</span> <span class="n">gameSettings</span> <span class="p">=</span> <span class="k">new</span> <span class="n">MyGameSettings</span><span class="p">();</span>
-    <span class="n">gameSettings</span><span class="p">.</span><span class="n">player1ID</span> <span class="p">=</span> <span class="n">player1</span><span class="p">.</span><span class="n">PlayerID</span><span class="p">;</span>
-    <span class="n">gameSettings</span><span class="p">.</span><span class="n">player2ID</span> <span class="p">=</span> <span class="n">player2</span><span class="p">.</span><span class="n">PlayerID</span><span class="p">;</span>
-
-    <span class="c1">// 4</span>
-    <span class="n">game</span><span class="p">.</span><span class="n">userData</span> <span class="p">=</span> <span class="n">gameSettings</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-</div>
-</div>
-<p>In <code>// 1</code>, you set the game type to offline.</p>
-<p>In <code>// 2</code>, you created two offline players.</p>
-<p>In <code>// 3</code>, you created a <code>MyGameSettings</code> object and set its playerIDs to the offline players you just created in <code>// 2</code>.</p>
-<p>In <code>// 4</code>, you passed the <code>MyGameSettings</code> Object created in <code>// 3</code> to the <code>FrameSyncGame</code>.</p>
+                <h1 id="building-the-game">Building the Game<a class="headerlink" href="#building-the-game" title="Permanent link">&para;</a></h1>
+<h2 id="64-bit-architecture">64-bit architecture<a class="headerlink" href="#64-bit-architecture" title="Permanent link">&para;</a></h2>
+<p>FrameSync only supports 64-bit systems. You'll go to <code>File</code>-&gt;<code>Build Settings</code> and set <code>Architecture</code> to 64-bit. </p>
+<p><img alt="img" src="../../../assets/tutorial/64bit_Pong.png" width="720" /></p>
+<h2 id="windowed-mode">Windowed mode<a class="headerlink" href="#windowed-mode" title="Permanent link">&para;</a></h2>
+<p>Next, go to <code>Player Settings</code> and set <code>FullScreen Mode</code> to <code>Windowed</code>.
+Also, set <code>Default Screen Width</code> to <code>1280</code> and <code>Default Screen Hight</code> to <code>720</code>.</p>
+<h2 id="entering-the-debug-playeruid">Entering the debug PlayerUID<a class="headerlink" href="#entering-the-debug-playeruid" title="Permanent link">&para;</a></h2>
+<p>Click on the Build button to build the game.
+You should see something like this once the game is launched.</p>
+<p><img alt="img" src="../../../assets/tutorial/gameStart_Pong.png" width="720" /></p>
+<p>The debug server has playerUID <code>1</code>-<code>8</code> available to use, you can connect up to 8 players to it for testing. For this game, you will use playerUID of <code>1</code> and <code>2</code> since there are only 2 players.</p>
+<p>You can run one instance of the game using the built game client, and another one in the Unity Editor. The paddles and the ball should be synchronized. </p>
+<p><img alt="img" src="../../../assets/tutorial/online.gif" width="720" /></p>
                 
               
               
@@ -795,7 +836,7 @@ Called after the <code>FrameSyncAgent</code> created its <code>FrameSyncGame</co
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../configEngine/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../online/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -804,19 +845,19 @@ Called after the <code>FrameSyncAgent</code> created its <code>FrameSyncGame</co
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Configuring FrameSyncEngine
+                Online FrameSyncAgent
               </div>
             </div>
           </a>
         
         
-          <a href="../collectInput/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../viewFrame/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Collecting Player Inputs
+                Frame Information
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">

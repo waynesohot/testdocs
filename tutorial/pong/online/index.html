@@ -13,7 +13,7 @@
     
     
       
-        <title>Configuring FrameSyncGame - FrameSync</title>
+        <title>Online FrameSyncAgent - FrameSync</title>
       
     
     
@@ -58,7 +58,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#configuring-the-framesyncgame" class="md-skip">
+        <a href="#online-framesyncagent" class="md-skip">
           Skip to content
         </a>
       
@@ -88,7 +88,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              Configuring FrameSyncGame
+              Online FrameSyncAgent
             
           </span>
         </div>
@@ -393,20 +393,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-    <a href="./" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../configGame/" class="md-nav__link">
       Configuring FrameSyncGame
     </a>
-    
   </li>
 
         
@@ -522,11 +513,63 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../online/" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Online FrameSyncAgent
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
       Online FrameSyncAgent
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#updating-the-onframesyncenginecreated-method" class="md-nav__link">
+    Updating the OnFrameSyncEngineCreated method
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#updating-the-onframesyncgamecreated-method" class="md-nav__link">
+    Updating the OnFrameSyncGameCreated method
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#updating-the-oncollectlocalplayerinputs-method" class="md-nav__link">
+    Updating the OnCollectLocalPlayerInputs method
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -721,6 +764,35 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#updating-the-onframesyncenginecreated-method" class="md-nav__link">
+    Updating the OnFrameSyncEngineCreated method
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#updating-the-onframesyncgamecreated-method" class="md-nav__link">
+    Updating the OnFrameSyncGameCreated method
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#updating-the-oncollectlocalplayerinputs-method" class="md-nav__link">
+    Updating the OnCollectLocalPlayerInputs method
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -732,51 +804,128 @@
               
                 
                 
-                <h1 id="configuring-the-framesyncgame">Configuring the FrameSyncGame<a class="headerlink" href="#configuring-the-framesyncgame" title="Permanent link">&para;</a></h1>
-<blockquote>
-<blockquote>
-<p><code>OnFrameSyncGameCreated</code>
-Called after the <code>FrameSyncAgent</code> created its <code>FrameSyncGame</code> in the <code>Awake()</code> method.</p>
-</blockquote>
-</blockquote>
-<p>In <code>OnFrameSyncGameCreated</code>, you create the players and set the game custom data of your game.</p>
+                <h1 id="online-framesyncagent">Online FrameSyncAgent<a class="headerlink" href="#online-framesyncagent" title="Permanent link">&para;</a></h1>
+<p>You'll modify the MyFrameSyncAgent script to support playing the game online.</p>
+<p>First, add a public field to the script <code>offline</code> to control online/offline mode easily in the inspector</p>
 <div class="tabbed-set" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">C#</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="k">public</span> <span class="k">class</span> <span class="nc">MyGameSettings</span>
-<span class="p">{</span>
-    <span class="k">public</span> <span class="kt">byte</span> <span class="n">player1ID</span><span class="p">;</span>
-    <span class="k">public</span> <span class="kt">byte</span> <span class="n">player2ID</span><span class="p">;</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="k">public</span> <span class="kt">bool</span> <span class="n">offline</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
 </code></pre></div>
 </div>
 </div>
-<p>You will use <code>MyGameSettings</code> as the custom data of your game. </p>
-<p>In online mode, game custom data is configured in the matchmaking stage before creating the <code>FrameSyncAgent</code>. </p>
-<p>For now, you will hardcode it to run the game offline.</p>
+<h2 id="updating-the-onframesyncenginecreated-method">Updating the OnFrameSyncEngineCreated method<a class="headerlink" href="#updating-the-onframesyncenginecreated-method" title="Permanent link">&para;</a></h2>
+<p>Next, you'll configure the networking input/output of the engine by adding <code>// 7</code> to the <code>OnFrameSyncEngineCreated</code> method.</p>
 <div class="tabbed-set" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">C#</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnFrameSyncGameCreated</span><span class="p">(</span><span class="n">FrameSyncGame</span> <span class="n">game</span><span class="p">,</span> <span class="n">FrameSyncReplay</span> <span class="n">replay</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code>    <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnFrameSyncEngineCreated</span><span class="p">(</span><span class="n">FrameSyncEngine</span> <span class="n">engine</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="c1">// 1</span>
-    <span class="n">game</span><span class="p">.</span><span class="n">type</span> <span class="p">=</span> <span class="n">FrameSyncGameType</span><span class="p">.</span><span class="n">Offline</span><span class="p">;</span>
+    <span class="n">FrameSyncInputSetting</span><span class="p">[]</span> <span class="n">inputSettings</span> <span class="p">=</span> <span class="k">new</span> <span class="n">FrameSyncInputSetting</span><span class="p">[</span><span class="m">2</span><span class="p">];</span>
 
     <span class="c1">// 2</span>
-    <span class="n">player1</span> <span class="p">=</span> <span class="n">game</span><span class="p">.</span><span class="n">CreateOfflineGamePlayer</span><span class="p">();</span>
-    <span class="n">player2</span> <span class="p">=</span> <span class="n">game</span><span class="p">.</span><span class="n">CreateOfflineGamePlayer</span><span class="p">();</span>
+    <span class="n">inputSettings</span><span class="p">[</span><span class="m">0</span><span class="p">]</span> <span class="p">=</span> <span class="n">FrameSyncInputSetting</span><span class="p">.</span><span class="n">CompressedFloatInput</span><span class="p">(</span>
+                                                           <span class="s">&quot;y&quot;</span><span class="p">,</span>
+                                                           <span class="n">Fix64</span><span class="p">.</span><span class="n">FromDivision</span><span class="p">(-</span><span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">),</span>
+                                                           <span class="n">Fix64</span><span class="p">.</span><span class="n">FromDivision</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">),</span>
+                                                           <span class="n">Fix64</span><span class="p">.</span><span class="n">FromDivision</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">10</span><span class="p">),</span>
+                                                           <span class="n">Fix64</span><span class="p">.</span><span class="n">zero</span><span class="p">);</span>
 
     <span class="c1">// 3</span>
-    <span class="n">MyGameSettings</span> <span class="n">gameSettings</span> <span class="p">=</span> <span class="k">new</span> <span class="n">MyGameSettings</span><span class="p">();</span>
-    <span class="n">gameSettings</span><span class="p">.</span><span class="n">player1ID</span> <span class="p">=</span> <span class="n">player1</span><span class="p">.</span><span class="n">PlayerID</span><span class="p">;</span>
-    <span class="n">gameSettings</span><span class="p">.</span><span class="n">player2ID</span> <span class="p">=</span> <span class="n">player2</span><span class="p">.</span><span class="n">PlayerID</span><span class="p">;</span>
+    <span class="n">inputSettings</span><span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="p">=</span> <span class="n">FrameSyncInputSetting</span><span class="p">.</span><span class="n">TriggerInput</span><span class="p">(</span><span class="s">&quot;ready&quot;</span><span class="p">);</span>
+
+    <span class="n">SetTickInterval</span><span class="p">(</span><span class="n">tickInterval</span><span class="p">);</span>
 
     <span class="c1">// 4</span>
-    <span class="n">game</span><span class="p">.</span><span class="n">userData</span> <span class="p">=</span> <span class="n">gameSettings</span><span class="p">;</span>
+    <span class="n">FrameSyncInputConfig</span> <span class="n">inputConfig</span> <span class="p">=</span> <span class="k">new</span> <span class="n">FrameSyncInputConfig</span><span class="p">(</span><span class="n">inputSettings</span><span class="p">);</span>
+    <span class="n">engine</span><span class="p">.</span><span class="n">SetFrameSyncInputConfig</span><span class="p">(</span><span class="n">inputConfig</span><span class="p">);</span>
+
+    <span class="c1">// 5</span>
+    <span class="n">parallelPhysics</span> <span class="p">=</span> <span class="n">FindObjectOfType</span><span class="p">&lt;</span><span class="n">ParallelPhysicsController2D</span><span class="p">&gt;();</span>
+    <span class="n">parallelPhysics</span><span class="p">.</span><span class="n">autoUpdate</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+
+    <span class="c1">// 6</span>
+    <span class="n">engine</span><span class="p">.</span><span class="n">OnEngineWillSimulateEvent</span> <span class="p">+=</span> <span class="n">FrameSyncEngineWillSimulate</span><span class="p">;</span>
+
+    <span class="c1">// 7</span>
+    <span class="k">if</span><span class="p">(!</span><span class="n">offline</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">engine</span><span class="p">.</span><span class="n">SetNetworkIO</span><span class="p">(</span><span class="n">FrameSyncClient</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">frameSyncIO</span><span class="p">);</span>
+    <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 </div>
 </div>
-<p>In <code>// 1</code>, you set the game type to offline.</p>
-<p>In <code>// 2</code>, you created two offline players.</p>
-<p>In <code>// 3</code>, you created a <code>MyGameSettings</code> object and set its playerIDs to the offline players you just created in <code>// 2</code>.</p>
-<p>In <code>// 4</code>, you passed the <code>MyGameSettings</code> Object created in <code>// 3</code> to the <code>FrameSyncGame</code>.</p>
+<h2 id="updating-the-onframesyncgamecreated-method">Updating the OnFrameSyncGameCreated method<a class="headerlink" href="#updating-the-onframesyncgamecreated-method" title="Permanent link">&para;</a></h2>
+<p>Replace the content of the <code>OnFrameSyncGameCreated</code> method with the following.</p>
+<div class="tabbed-set" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">C#</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>    <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnFrameSyncGameCreated</span><span class="p">(</span><span class="n">FrameSyncGame</span> <span class="n">game</span><span class="p">,</span> <span class="n">FrameSyncReplay</span> <span class="n">replay</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">offline</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// 1</span>
+        <span class="n">game</span><span class="p">.</span><span class="n">type</span> <span class="p">=</span> <span class="n">FrameSyncGameType</span><span class="p">.</span><span class="n">Offline</span><span class="p">;</span>
+
+        <span class="c1">// 2</span>
+        <span class="n">player1</span> <span class="p">=</span> <span class="n">game</span><span class="p">.</span><span class="n">CreateOfflineGamePlayer</span><span class="p">();</span>
+        <span class="n">player2</span> <span class="p">=</span> <span class="n">game</span><span class="p">.</span><span class="n">CreateOfflineGamePlayer</span><span class="p">();</span>
+
+        <span class="c1">// 3</span>
+        <span class="n">MyGameSettings</span> <span class="n">gameSettings</span> <span class="p">=</span> <span class="k">new</span> <span class="n">MyGameSettings</span><span class="p">();</span>
+        <span class="n">gameSettings</span><span class="p">.</span><span class="n">player1ID</span> <span class="p">=</span> <span class="n">player1</span><span class="p">.</span><span class="n">PlayerID</span><span class="p">;</span>
+        <span class="n">gameSettings</span><span class="p">.</span><span class="n">player2ID</span> <span class="p">=</span> <span class="n">player2</span><span class="p">.</span><span class="n">PlayerID</span><span class="p">;</span>
+
+        <span class="c1">// 4</span>
+        <span class="n">game</span><span class="p">.</span><span class="n">userData</span> <span class="p">=</span> <span class="n">gameSettings</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="c1">// 5</span>
+        <span class="n">game</span><span class="p">.</span><span class="n">type</span> <span class="p">=</span> <span class="n">FrameSyncGameType</span><span class="p">.</span><span class="n">Online</span><span class="p">;</span>
+
+        <span class="c1">// 6</span>
+        <span class="n">game</span><span class="p">.</span><span class="n">SetPlayerDataProvider</span><span class="p">(</span><span class="n">FrameSyncClient</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">playerDataProvider</span><span class="p">);</span>
+        <span class="n">game</span><span class="p">.</span><span class="n">CreateOnlinePlayers</span><span class="p">();</span>
+
+        <span class="c1">// 7</span>
+        <span class="n">game</span><span class="p">.</span><span class="n">CreateGameUserData</span><span class="p">&lt;</span><span class="n">MyGameSettings</span><span class="p">&gt;();</span>
+
+        <span class="c1">//todo: game settings will be created in the matchmaking stage</span>
+        <span class="n">MyGameSettings</span> <span class="n">gameSettings</span> <span class="p">=</span> <span class="k">new</span> <span class="n">MyGameSettings</span><span class="p">();</span>
+        <span class="n">gameSettings</span><span class="p">.</span><span class="n">player1ID</span> <span class="p">=</span> <span class="m">1</span><span class="p">;</span>
+        <span class="n">gameSettings</span><span class="p">.</span><span class="n">player2ID</span> <span class="p">=</span> <span class="m">2</span><span class="p">;</span>
+        <span class="n">game</span><span class="p">.</span><span class="n">userData</span> <span class="p">=</span> <span class="n">gameSettings</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+<p>In <code>// 5</code>, you set the game type to <code>Online</code>.</p>
+<p>In <code>// 6</code>, you create the online players by setting the <code>PlayerDataProvider</code> of the game and calling the <code>CreateOnlinePlayers</code> method.</p>
+<p>In <code>// 7</code>, you create the <code>userData</code> of the game. the <code>userData</code> is hardcoded for now for testing.</p>
+<h2 id="updating-the-oncollectlocalplayerinputs-method">Updating the OnCollectLocalPlayerInputs method<a class="headerlink" href="#updating-the-oncollectlocalplayerinputs-method" title="Permanent link">&para;</a></h2>
+<p>Replace the content of the <code>OnCollectLocalPlayerInputs</code> method with the following.</p>
+<div class="tabbed-set" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">C#</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>    <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnCollectLocalPlayerInputs</span><span class="p">(</span><span class="n">FrameSyncInput</span> <span class="n">input</span><span class="p">,</span> <span class="n">FrameSyncGame</span> <span class="n">game</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">offline</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// 1</span>
+        <span class="n">input</span><span class="p">.</span><span class="n">SetFloatForPlayer</span><span class="p">(</span><span class="s">&quot;y&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">Fix64</span><span class="p">)</span><span class="n">Input</span><span class="p">.</span><span class="n">GetAxis</span><span class="p">(</span><span class="s">&quot;Vertical&quot;</span><span class="p">),</span> <span class="n">player1</span><span class="p">);</span>
+        <span class="n">input</span><span class="p">.</span><span class="n">SetTriggerForPlayer</span><span class="p">(</span><span class="s">&quot;ready&quot;</span><span class="p">,</span> <span class="n">Input</span><span class="p">.</span><span class="n">GetKeyUp</span><span class="p">(</span><span class="n">KeyCode</span><span class="p">.</span><span class="n">G</span><span class="p">),</span> <span class="n">player1</span><span class="p">);</span>
+
+        <span class="c1">// 2</span>
+        <span class="n">input</span><span class="p">.</span><span class="n">SetFloatForPlayer</span><span class="p">(</span><span class="s">&quot;y&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">Fix64</span><span class="p">)</span><span class="n">Input</span><span class="p">.</span><span class="n">GetAxis</span><span class="p">(</span><span class="s">&quot;Vertical1&quot;</span><span class="p">),</span> <span class="n">player2</span><span class="p">);</span>
+        <span class="n">input</span><span class="p">.</span><span class="n">SetTriggerForPlayer</span><span class="p">(</span><span class="s">&quot;ready&quot;</span><span class="p">,</span> <span class="n">Input</span><span class="p">.</span><span class="n">GetKeyUp</span><span class="p">(</span><span class="n">KeyCode</span><span class="p">.</span><span class="n">H</span><span class="p">),</span> <span class="n">player2</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="c1">// 3</span>
+        <span class="n">input</span><span class="p">.</span><span class="n">SetFloatForPlayer</span><span class="p">(</span><span class="s">&quot;y&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">Fix64</span><span class="p">)</span><span class="n">Input</span><span class="p">.</span><span class="n">GetAxis</span><span class="p">(</span><span class="s">&quot;Vertical&quot;</span><span class="p">),</span> <span class="n">game</span><span class="p">.</span><span class="n">localPlayer</span><span class="p">);</span>
+        <span class="n">input</span><span class="p">.</span><span class="n">SetTriggerForPlayer</span><span class="p">(</span><span class="s">&quot;ready&quot;</span><span class="p">,</span> <span class="n">Input</span><span class="p">.</span><span class="n">GetKeyUp</span><span class="p">(</span><span class="n">KeyCode</span><span class="p">.</span><span class="n">G</span><span class="p">),</span> <span class="n">game</span><span class="p">.</span><span class="n">localPlayer</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>In <code>// 3</code>, collect input values of the <code>up arrow</code>, <code>down arrow</code>, and <code>g</code> keys for the local player.</p>
+</div>
+</div>
                 
               
               
@@ -795,7 +944,7 @@ Called after the <code>FrameSyncAgent</code> created its <code>FrameSyncGame</co
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../configEngine/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../connectToDebugServer/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -804,19 +953,19 @@ Called after the <code>FrameSyncAgent</code> created its <code>FrameSyncGame</co
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Configuring FrameSyncEngine
+                Connecting to Debug Server
               </div>
             </div>
           </a>
         
         
-          <a href="../collectInput/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../buildGame/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Collecting Player Inputs
+                Building the Game
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">
