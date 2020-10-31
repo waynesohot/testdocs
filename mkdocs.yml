@@ -18,6 +18,10 @@ nav:
       - Ball Manager: tutorial/pong/ballManager.md
       - Playing Offline: tutorial/pong/offline.md
       - Debug Server: tutorial/pong/debugServer.md
+      - Connecting to Debug Server: tutorial/pong/connectToDebugServer.md
+      - Online FrameSyncAgent: tutorial/pong/online.md
+      - Building the Game: tutorial/pong/buildGame.md
+      - Frame Information: tutorial/pong/viewFrame.md
   - FrameSync:
     - Important Classes:
       - FrameSyncAgent: frameSync/importantClass/frameSyncAgent.md

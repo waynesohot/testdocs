@@ -6,11 +6,11 @@ FrameSync comes with a debug server that helps you test and debug your game on y
 
 You can download the debug server from our github page.
 
-......
+https://github.com/shuningzhou/FrameSyncDebugServer
 
 ## Launch the server
 
-**Double Click** the `debugserver` application to launch the debug server. You should see something like the following in the terminal.
+**Double Click** the `debugserver` application in the `bin` folder to launch the debug server. You should see something like the following in the terminal.
 
 ![img](./../../assets/tutorial/LaunchDebugger_Pong.png){: width=720 }
 
