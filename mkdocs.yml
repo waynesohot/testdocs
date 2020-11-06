@@ -22,6 +22,7 @@ nav:
       - Online FrameSyncAgent: tutorial/pong/online.md
       - Building the Game: tutorial/pong/buildGame.md
       - Frame Information: tutorial/pong/viewFrame.md
+      - Rollback: tutorial/pong/Rollback.md
   - FrameSync:
     - Important Classes:
       - FrameSyncAgent: frameSync/importantClass/frameSyncAgent.md

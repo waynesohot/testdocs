@@ -2,7 +2,7 @@
 
 You'll modify the MyFrameSyncAgent script to support playing the game online.
 
-First, add a public field to the script `offline` to control online/offline mode easily in the inspector
+First, add a public field `offline` to the `MyFrameSyncAgent` script to control **online/offline** mode in the inspector
 
 === "C#"
     ``` c#
@@ -30,8 +30,6 @@ Next, you'll configure the networking input/output of the engine by adding `// 7
 
         // 3
         inputSettings[1] = FrameSyncInputSetting.TriggerInput("ready");
-
-        SetTickInterval(tickInterval);
 
         // 4
         FrameSyncInputConfig inputConfig = new FrameSyncInputConfig(inputSettings);
