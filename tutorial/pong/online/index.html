@@ -597,6 +597,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Rollback/" class="md-nav__link">
+      Rollback
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -806,7 +818,7 @@
                 
                 <h1 id="online-framesyncagent">Online FrameSyncAgent<a class="headerlink" href="#online-framesyncagent" title="Permanent link">&para;</a></h1>
 <p>You'll modify the MyFrameSyncAgent script to support playing the game online.</p>
-<p>First, add a public field to the script <code>offline</code> to control online/offline mode easily in the inspector</p>
+<p>First, add a public field <code>offline</code> to the <code>MyFrameSyncAgent</code> script to control <strong>online/offline</strong> mode in the inspector</p>
 <div class="tabbed-set" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">C#</label><div class="tabbed-content">
 <div class="highlight"><pre><span></span><code><span class="k">public</span> <span class="kt">bool</span> <span class="n">offline</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
 </code></pre></div>
@@ -830,8 +842,6 @@
 
     <span class="c1">// 3</span>
     <span class="n">inputSettings</span><span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="p">=</span> <span class="n">FrameSyncInputSetting</span><span class="p">.</span><span class="n">TriggerInput</span><span class="p">(</span><span class="s">&quot;ready&quot;</span><span class="p">);</span>
-
-    <span class="n">SetTickInterval</span><span class="p">(</span><span class="n">tickInterval</span><span class="p">);</span>
 
     <span class="c1">// 4</span>
     <span class="n">FrameSyncInputConfig</span> <span class="n">inputConfig</span> <span class="p">=</span> <span class="k">new</span> <span class="n">FrameSyncInputConfig</span><span class="p">(</span><span class="n">inputSettings</span><span class="p">);</span>

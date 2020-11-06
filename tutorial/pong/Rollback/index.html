@@ -13,7 +13,7 @@
     
     
       
-        <title>Paddle Position Data - FrameSync</title>
+        <title>Rollback - FrameSync</title>
       
     
     
@@ -58,7 +58,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#paddle-position-data" class="md-skip">
+        <a href="#rollback" class="md-skip">
           Skip to content
         </a>
       
@@ -88,7 +88,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              Paddle Position Data
+              Rollback
             
           </span>
         </div>
@@ -453,56 +453,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        Paddle Position Data
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-    
-    <a href="./" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../paddlePosition/" class="md-nav__link">
       Paddle Position Data
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#importing" class="md-nav__link">
-    Importing
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#exporting" class="md-nav__link">
-    Exporting
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -594,11 +549,20 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../Rollback/" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
       Rollback
     </a>
+    
   </li>
 
         
@@ -769,28 +733,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#importing" class="md-nav__link">
-    Importing
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#exporting" class="md-nav__link">
-    Exporting
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -802,81 +744,185 @@
               
                 
                 
-                <h1 id="paddle-position-data">Paddle Position Data<a class="headerlink" href="#paddle-position-data" title="Permanent link">&para;</a></h1>
-<p>Next, you'll export the paddle position data. The paddle position should be exported and uploaded to the game server for validation.</p>
-<p>Add a new script called <code>PaddlePositionData</code> to the <code>Paddle</code> GameObject. </p>
-<p>Replace the content of the script with the following. Note that the <code>PaddlePositionData</code> implements the <code>IFrameSyncData</code> interface.</p>
+                <h1 id="rollback">Rollback<a class="headerlink" href="#rollback" title="Permanent link">&para;</a></h1>
+<p>You can adjust the <code>ping</code> value in the config.json file to simulate a bad internet connection.</p>
+<p>Set the <code>ping</code> to 150, it will inject a delay of 150ms to the packets sent between the debug server and the game clients. The RTT for the connections will be 300ms now.</p>
+<p><img alt="img" src="../../../assets/tutorial/config_json.png" width="720" /></p>
+<p>Play the game again, the input delay should be very noticeable. You'll add <strong>Rollback</strong> to your game to make it more responsive.</p>
+<h1 id="iresotrable">IResotrable<a class="headerlink" href="#iresotrable" title="Permanent link">&para;</a></h1>
+<p>First, you will create a new class that implements IRestorable interface. </p>
+<p>A Rollback enabled game needs to rollback the game states to a confirmed frame from the server. 
+The FrameSyncEngine will take care of the game states stored in the <code>IFrameSyncData</code> components.
+You need to provide the FrameSyncEngine with a IRestorable object to restore any states that are not stored in a <code>IFrameSyncData</code> component.</p>
 <div class="tabbed-set" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">C#</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="k">using</span> <span class="nn">UnityEngine</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">SWNetwork.FrameSync</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">SWNetwork.Core</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">Parallel</span><span class="p">;</span>
-
-<span class="k">public</span> <span class="k">class</span> <span class="nc">PaddlePositionData</span> <span class="p">:</span> <span class="n">MonoBehaviour</span><span class="p">,</span> <span class="n">IFrameSyncData</span>
+<div class="highlight"><pre><span></span><code><span class="k">public</span> <span class="k">class</span> <span class="nc">MyRestorable</span> <span class="p">:</span> <span class="n">IRestorable</span>
 <span class="p">{</span>
-    <span class="c1">// reference to the PaddleOwnerData component</span>
-    <span class="n">ParallelTransform</span> <span class="n">parallelTransform</span><span class="p">;</span>
+    <span class="n">PSnapshot2D</span> <span class="n">snapshot2D</span><span class="p">;</span>
 
-    <span class="k">public</span> <span class="k">void</span> <span class="nf">Awake</span><span class="p">()</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">frameNumber</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="k">public</span> <span class="nf">MyRestorable</span><span class="p">(</span><span class="kt">int</span> <span class="n">frameNumber</span><span class="p">)</span>
     <span class="p">{</span>
-        <span class="n">parallelTransform</span> <span class="p">=</span> <span class="n">GetComponent</span><span class="p">&lt;</span><span class="n">ParallelTransform</span><span class="p">&gt;();</span>
+        <span class="c1">// 1</span>
+        <span class="n">snapshot2D</span> <span class="p">=</span> <span class="n">Parallel2D</span><span class="p">.</span><span class="n">Snapshot</span><span class="p">();</span>
+        <span class="k">this</span><span class="p">.</span><span class="n">frameNumber</span> <span class="p">=</span> <span class="n">frameNumber</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="k">public</span> <span class="k">void</span> <span class="nf">FrameSyncDataInitialize</span><span class="p">(</span><span class="n">FrameSyncGame</span> <span class="n">game</span><span class="p">)</span>
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">Clear</span><span class="p">()</span>
     <span class="p">{</span>
-
+        <span class="c1">// 2</span>
+        <span class="n">Parallel2D</span><span class="p">.</span><span class="n">DestroySnapshot</span><span class="p">(</span><span class="n">snapshot2D</span><span class="p">);</span>
     <span class="p">}</span>
 
-    <span class="k">public</span> <span class="k">void</span> <span class="nf">Import</span><span class="p">(</span><span class="n">SWBytes</span> <span class="n">buffer</span><span class="p">)</span>
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">Restore</span><span class="p">()</span>
     <span class="p">{</span>
-    <span class="p">}</span>
-
-    <span class="k">public</span> <span class="k">void</span> <span class="nf">Export</span><span class="p">(</span><span class="n">SWBytes</span> <span class="n">buffer</span><span class="p">)</span>
-    <span class="p">{</span>
-    <span class="p">}</span>
-
-    <span class="k">public</span> <span class="k">void</span> <span class="nf">ExportDebugInfo</span><span class="p">(</span><span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;</span> <span class="n">debugDictionary</span><span class="p">)</span>
-    <span class="p">{</span>
+        <span class="c1">// 3</span>
+        <span class="n">Parallel2D</span><span class="p">.</span><span class="n">Restore</span><span class="p">(</span><span class="n">snapshot2D</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 </div>
 </div>
-<h2 id="importing">Importing<a class="headerlink" href="#importing" title="Permanent link">&para;</a></h2>
-<p>Add the following to the <code>Import</code> methods.</p>
+<p>In <code>// 1</code>, you create a snapshot of the <strong>Parallel</strong> physics world. The created <code>MyRestorable</code> will be passed to the FrameSyncEngine.</p>
+<p>In <code>// 2</code>, The FrameSyncEngine will call the <code>Clear()</code> method when it does not need to rollback to the frame for a <code>IRestorable</code>. You will destory the snapshot to free the memory in the Parallel physics world.</p>
+<p>In <code>// 3</code>, The FrameSyncEngine will call the <code>Restore()</code> method when it wants to rollback to the frame for a <code>IRestorable</code>. You will use the snapshot to restore the physics state of the <strong>Parallel</strong> physics world. </p>
+<p>Next, add a public field <code>rollback</code> to the <code>MyFrameSyncAgent</code> script to enable/disable <strong>Rollback</strong> in the inspector.</p>
 <div class="tabbed-set" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">C#</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="k">public</span> <span class="k">void</span> <span class="nf">Import</span><span class="p">(</span><span class="n">SWBytes</span> <span class="n">buffer</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">public</span> <span class="kt">bool</span> <span class="n">rollback</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+<h2 id="onenginewillexportevent">OnEngineWillExportEvent<a class="headerlink" href="#onenginewillexportevent" title="Permanent link">&para;</a></h2>
+<p>Make the following change to the <code>OnFrameSyncEngineCreated</code> method.</p>
+<div class="tabbed-set" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">C#</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnFrameSyncEngineCreated</span><span class="p">(</span><span class="n">FrameSyncEngine</span> <span class="n">engine</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="c1">// 1</span>
-    <span class="kt">long</span> <span class="n">y</span> <span class="p">=</span> <span class="n">buffer</span><span class="p">.</span><span class="n">PopLong</span><span class="p">();</span>
-    <span class="n">Fix64</span> <span class="n">fy</span> <span class="p">=</span> <span class="n">Fix64</span><span class="p">.</span><span class="n">FromRaw</span><span class="p">(</span><span class="n">y</span><span class="p">);</span>
+    <span class="n">FrameSyncInputSetting</span><span class="p">[]</span> <span class="n">inputSettings</span> <span class="p">=</span> <span class="k">new</span> <span class="n">FrameSyncInputSetting</span><span class="p">[</span><span class="m">2</span><span class="p">];</span>
 
     <span class="c1">// 2</span>
-    <span class="n">parallelTransform</span><span class="p">.</span><span class="n">position</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Fix64Vec3</span><span class="p">(</span>
-                                        <span class="n">parallelTransform</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> 
-                                        <span class="n">fy</span><span class="p">,</span> 
-                                        <span class="n">parallelTransform</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">z</span><span class="p">);</span>
+    <span class="n">inputSettings</span><span class="p">[</span><span class="m">0</span><span class="p">]</span> <span class="p">=</span> <span class="n">FrameSyncInputSetting</span><span class="p">.</span><span class="n">CompressedFloatInput</span><span class="p">(</span>
+                                                           <span class="s">&quot;y&quot;</span><span class="p">,</span>
+                                                           <span class="n">Fix64</span><span class="p">.</span><span class="n">FromDivision</span><span class="p">(-</span><span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">),</span>
+                                                           <span class="n">Fix64</span><span class="p">.</span><span class="n">FromDivision</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">),</span>
+                                                           <span class="n">Fix64</span><span class="p">.</span><span class="n">FromDivision</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">10</span><span class="p">),</span>
+                                                           <span class="n">Fix64</span><span class="p">.</span><span class="n">zero</span><span class="p">);</span>
+
+    <span class="c1">// 3</span>
+    <span class="n">inputSettings</span><span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="p">=</span> <span class="n">FrameSyncInputSetting</span><span class="p">.</span><span class="n">TriggerInput</span><span class="p">(</span><span class="s">&quot;ready&quot;</span><span class="p">);</span>
+
+    <span class="c1">// 4</span>
+    <span class="n">FrameSyncInputConfig</span> <span class="n">inputConfig</span> <span class="p">=</span> <span class="k">new</span> <span class="n">FrameSyncInputConfig</span><span class="p">(</span><span class="n">inputSettings</span><span class="p">);</span>
+    <span class="n">engine</span><span class="p">.</span><span class="n">SetFrameSyncInputConfig</span><span class="p">(</span><span class="n">inputConfig</span><span class="p">);</span>
+
+    <span class="c1">// 5</span>
+    <span class="n">parallelPhysics</span> <span class="p">=</span> <span class="n">FindObjectOfType</span><span class="p">&lt;</span><span class="n">ParallelPhysicsController2D</span><span class="p">&gt;();</span>
+    <span class="n">parallelPhysics</span><span class="p">.</span><span class="n">autoUpdate</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+
+    <span class="c1">// 6</span>
+    <span class="n">engine</span><span class="p">.</span><span class="n">OnEngineWillSimulateEvent</span> <span class="p">+=</span> <span class="n">FrameSyncEngineWillSimulate</span><span class="p">;</span>
+
+    <span class="c1">// 7</span>
+    <span class="k">if</span><span class="p">(!</span><span class="n">offline</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">engine</span><span class="p">.</span><span class="n">SetNetworkIO</span><span class="p">(</span><span class="n">FrameSyncClient</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">frameSyncIO</span><span class="p">);</span>
+
+        <span class="c1">// 8</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">rollback</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">engine</span><span class="p">.</span><span class="n">OnEngineWillExportEvent</span> <span class="p">+=</span> <span class="n">FrameSyncEngineWillExport</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 </div>
 </div>
-<p>In <code>// 1</code>, you pop the <code>y</code> position value from the buffer.</p>
-<p>In <code>// 2</code>, you restore the paddle position to the <code>y</code> position value.</p>
-<h2 id="exporting">Exporting<a class="headerlink" href="#exporting" title="Permanent link">&para;</a></h2>
-<p>Add the following to the <code>Export</code> methods.</p>
-<div class="tabbed-set" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">C#</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="k">public</span> <span class="k">void</span> <span class="nf">Export</span><span class="p">(</span><span class="n">SWBytes</span> <span class="n">buffer</span><span class="p">)</span>
+<p>In <code>// 8</code>, we add our handler to the <code>OnEngineWillExportEvent</code> if <code>rollback</code> is enabled;</p>
+<div class="tabbed-set" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">C#</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="n">IRestorable</span> <span class="nf">FrameSyncEngineWillExport</span><span class="p">(</span><span class="kt">int</span> <span class="n">frameNumber</span><span class="p">)</span>
 <span class="p">{</span>
-    <span class="c1">// 1</span>
-    <span class="n">buffer</span><span class="p">.</span><span class="n">Push</span><span class="p">(</span><span class="n">parallelTransform</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">y</span><span class="p">.</span><span class="n">Raw</span><span class="p">);</span>
+    <span class="n">MyRestorable</span> <span class="n">restorable</span> <span class="p">=</span> <span class="k">new</span> <span class="n">MyRestorable</span><span class="p">(</span><span class="n">frameNumber</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">restorable</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 </div>
 </div>
-<p>In <code>// 1</code>, you push the <code>y</code> position value to the buffer.</p>
-<details class="info" open="open"><summary>Info</summary><p>The <code>ExportDebugInfo</code> method is left empty. It is only used when you are debugging the game with a local dev server.</p>
-</details>
+<p>You create an <code>IRestorable</code> in the event handler and returned it to the FrameSyncEngine.</p>
+<h2 id="enable-rollback">Enable Rollback<a class="headerlink" href="#enable-rollback" title="Permanent link">&para;</a></h2>
+<p>Make the following change to the <code>OnFrameSyncGameCreated</code> method</p>
+<div class="tabbed-set" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">C#</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnFrameSyncGameCreated</span><span class="p">(</span><span class="n">FrameSyncGame</span> <span class="n">game</span><span class="p">,</span> <span class="n">FrameSyncReplay</span> <span class="n">replay</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">offline</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// 1</span>
+        <span class="n">game</span><span class="p">.</span><span class="n">type</span> <span class="p">=</span> <span class="n">FrameSyncGameType</span><span class="p">.</span><span class="n">Offline</span><span class="p">;</span>
+
+        <span class="c1">// 2</span>
+        <span class="n">player1</span> <span class="p">=</span> <span class="n">game</span><span class="p">.</span><span class="n">CreateOfflineGamePlayer</span><span class="p">();</span>
+        <span class="n">player2</span> <span class="p">=</span> <span class="n">game</span><span class="p">.</span><span class="n">CreateOfflineGamePlayer</span><span class="p">();</span>
+
+        <span class="c1">// 3</span>
+        <span class="n">MyGameSettings</span> <span class="n">gameSettings</span> <span class="p">=</span> <span class="k">new</span> <span class="n">MyGameSettings</span><span class="p">();</span>
+        <span class="n">gameSettings</span><span class="p">.</span><span class="n">player1ID</span> <span class="p">=</span> <span class="n">player1</span><span class="p">.</span><span class="n">PlayerID</span><span class="p">;</span>
+        <span class="n">gameSettings</span><span class="p">.</span><span class="n">player2ID</span> <span class="p">=</span> <span class="n">player2</span><span class="p">.</span><span class="n">PlayerID</span><span class="p">;</span>
+
+        <span class="c1">// 4</span>
+        <span class="n">game</span><span class="p">.</span><span class="n">userData</span> <span class="p">=</span> <span class="n">gameSettings</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="c1">// 5</span>
+        <span class="n">game</span><span class="p">.</span><span class="n">type</span> <span class="p">=</span> <span class="n">FrameSyncGameType</span><span class="p">.</span><span class="n">Online</span><span class="p">;</span>
+
+        <span class="c1">// 6</span>
+        <span class="n">game</span><span class="p">.</span><span class="n">SetPlayerDataProvider</span><span class="p">(</span><span class="n">FrameSyncClient</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">playerDataProvider</span><span class="p">);</span>
+        <span class="n">game</span><span class="p">.</span><span class="n">CreateOnlinePlayers</span><span class="p">();</span>
+
+        <span class="c1">// 7</span>
+        <span class="n">game</span><span class="p">.</span><span class="n">CreateGameUserData</span><span class="p">&lt;</span><span class="n">MyGameSettings</span><span class="p">&gt;();</span>
+
+        <span class="c1">//todo: game settings will be created in the matchmaking stage</span>
+        <span class="n">MyGameSettings</span> <span class="n">gameSettings</span> <span class="p">=</span> <span class="k">new</span> <span class="n">MyGameSettings</span><span class="p">();</span>
+        <span class="n">gameSettings</span><span class="p">.</span><span class="n">player1ID</span> <span class="p">=</span> <span class="m">1</span><span class="p">;</span>
+        <span class="n">gameSettings</span><span class="p">.</span><span class="n">player2ID</span> <span class="p">=</span> <span class="m">2</span><span class="p">;</span>
+        <span class="n">game</span><span class="p">.</span><span class="n">userData</span> <span class="p">=</span> <span class="n">gameSettings</span><span class="p">;</span>
+
+        <span class="c1">// 8</span>
+        <span class="n">game</span><span class="p">.</span><span class="n">clientSidePrediction</span> <span class="p">=</span> <span class="n">clientSidePrediction</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+<p>In <code>// 8</code>, you enabled <code>clientSidePrediction</code> on your game.</p>
+<p>Play the game, the input delay should be reduced a lot now.</p>
+<h2 id="prediction-modifier">Prediction Modifier<a class="headerlink" href="#prediction-modifier" title="Permanent link">&para;</a></h2>
+<p>You can use the <code>Prediction Modifier</code> to control the extrapolation for the other players. By default, the FrameSyncEngine just reuses the last received inputs to simulate other players for the prediction frames. </p>
+<p>Make the following change to the <code>OnFrameSyncEngineCreated</code> method.</p>
+<div class="tabbed-set" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">C#</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="c1">// 2</span>
+<span class="n">inputSettings</span><span class="p">[</span><span class="m">0</span><span class="p">]</span> <span class="p">=</span> <span class="n">FrameSyncInputSetting</span><span class="p">.</span><span class="n">CompressedFloatInput</span><span class="p">(</span>
+                                                        <span class="s">&quot;y&quot;</span><span class="p">,</span>
+                                                        <span class="n">Fix64</span><span class="p">.</span><span class="n">FromDivision</span><span class="p">(-</span><span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">),</span>
+                                                        <span class="n">Fix64</span><span class="p">.</span><span class="n">FromDivision</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">),</span>
+                                                        <span class="n">Fix64</span><span class="p">.</span><span class="n">FromDivision</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">10</span><span class="p">),</span>
+                                                        <span class="n">Fix64</span><span class="p">.</span><span class="n">zero</span><span class="p">,</span>
+                                                        <span class="n">PredictionModifier</span><span class="p">);</span>
+</code></pre></div>
+</div>
+</div>
+<p>In <code>// 2</code>, you set the <code>PredictionModifier</code> method as the <code>Prediction Modifier</code> of the <code>y</code> input.</p>
+<div class="tabbed-set" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><label for="__tabbed_7_1">C#</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="n">Fix64</span> <span class="nf">PredictionModifier</span><span class="p">(</span><span class="n">Fix64</span> <span class="k">value</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="k">value</span> <span class="p">*</span> <span class="n">Fix64</span><span class="p">.</span><span class="n">half</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+<p>The <code>PredictionModifier</code> method is very simply, the <code>y</code> input is decayed by 50%. </p>
+<p>The <code>PredictionModifier</code> method is called for every prediction frame, and the output of frame <code>n</code> will be used as the input for frame <code>n+1</code>. So if the initial value of <code>y</code> is 1, the predicted values of <code>y</code> in the predicted frames will be <code>0.5</code>, <code>0.25</code>, <code>0.125</code>...</p>
                 
               
               
@@ -895,7 +941,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../paddleMovement/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../viewFrame/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -904,19 +950,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Paddle Movement
+                Frame Information
               </div>
             </div>
           </a>
         
         
-          <a href="../ballManager/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../../frameSync/importantClass/frameSyncAgent/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Ball Manager
+                FrameSyncAgent
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">
