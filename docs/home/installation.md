@@ -2,8 +2,11 @@
 
 ## Installation
 
-https://github.com/shuningzhou/upmtest.git
+https://gitee.com/kcezorro/parallel-up.git
 
-https://github.com/shuningzhou/framesyncup.git
+https://gitee.com/kcezorro/frame-sync-up.git
 
-https://github.com/shuningzhou/PathfindingUP.git
+
+https://gitee.com/kcezorro/pathfinding-up.git
+
+https://gitee.com/kcezorro/frame-sync-debug-server.git
