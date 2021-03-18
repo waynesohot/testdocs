@@ -26,10 +26,16 @@ nav:
   - FrameSync:
     - Important Classes:
       - FrameSyncAgent: frameSync/importantClass/frameSyncAgent.md
-  - Physics:
-    - physics.md
+  - Physics2D:
+    - Overview: physics2d/physics2D.md
+    - Classes:
+      - ParallelBoxCollider2D: physics2d/parallelBoxCollider2D.md
   - Fixed Math:
-    - fixedmath.md
+    - Overview: fixedmath/fixedmath.md
+    - Classes:
+      - FMath: fixedmath/fmath.md
+      - FVector2: fixedmath/fvector2.md
+      - FVector3: fixedmath/fvector3.md
 extra_css:
   - stylesheets/extra.css
 theme:
