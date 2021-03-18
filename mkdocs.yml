@@ -36,6 +36,8 @@ nav:
       - FMath: fixedmath/fmath.md
       - FVector2: fixedmath/fvector2.md
       - FVector3: fixedmath/fvector3.md
+      - FQuaternion: fixedmath/fquaternion.md
+      - FMatrix4x4: fixedmath/fmatrix4x4.md
 extra_css:
   - stylesheets/extra.css
 theme:

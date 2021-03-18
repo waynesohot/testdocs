@@ -1,7 +1,7 @@
 ## Description
 Representation of 2D vectors and points.
 
-| **Static Properties**  | **Description**  |  **Mathf**     |  **FMath**   | 
+| **Static Properties**  | **Description**  |  **Vector2**     |  **FVector2**   | 
 | ----------- |----------- | ----------- |------------------------------------ |
 | down	| Shorthand for writing Vector2(0, -1).| :material-check: |:material-check: |
 | left	| Shorthand for writing Vector2(-1, 0).| :material-check: |:material-check: |
@@ -13,7 +13,7 @@ Representation of 2D vectors and points.
 | zero	| Shorthand for writing Vector2(0, 0).| :material-check: |:material-check: |
 
 
-| **Properties**  | **Description**  |  **Mathf**     |  **FMath**   | 
+| **Properties**  | **Description**  |  **Vector2**     |  **FVector2**   | 
 | ----------- |----------- | ----------- |------------------------------------ |
 | magnitude	| Returns the length of this vector (Read Only).| :material-check: |:material-check: |
 | normalized	| Returns this vector with a magnitude of 1 (Read Only).| :material-check: |:material-check: |
@@ -22,19 +22,19 @@ Representation of 2D vectors and points.
 | x	| X component of the vector.| :material-check: |:material-check: |
 | y	| Y component of the vector.| :material-check: |:material-check: |
 
-| **Constructors**  | **Description**  |  **Mathf**     |  **FMath**   | 
+| **Constructors**  | **Description**  |  **Vector2**     |  **FVector2**   | 
 | ----------- |----------- | ----------- |------------------------------------ |
 | Vector2	| Constructs a new vector with given x, y components.| :material-check: |:material-close: |
 | FVector2	| Constructs a new vector with given x, y components.| :material-close: |:material-check: |
 
-| **Public Methods**  | **Description**  |  **Mathf**     |  **FMath**   | 
+| **Public Methods**  | **Description**  |  **Vector2**     |  **FVector2**   | 
 | ----------- |----------- | ----------- |------------------------------------ |
 | Equals	| Returns true if the given vector is exactly equal to this vector.| :material-check: |:material-check: |
 | Normalize	| Makes this vector have a magnitude of 1.| :material-check: |:material-check: |
 | Set	| Set x and y components of an existing Vector2.| :material-check: |:material-check: |
 | ToString	| Returns a formatted string for this vector.| :material-check: |:material-check: |
 
-| **Static Methods**  | **Description**  |  **Mathf**     |  **FMath**   | 
+| **Static Methods**  | **Description**  |  **Vector2**     |  **FVector2**   | 
 | ----------- |----------- | ----------- |------------------------------------ |
 | Angle	| Returns the unsigned angle in degrees between from and to.| :material-check: |:material-check: |
 | ClampMagnitude	| Returns a copy of vector with its magnitude clamped to maxLength.| :material-check: |:material-check: |
@@ -51,7 +51,7 @@ Representation of 2D vectors and points.
 | SignedAngle	| Returns the signed angle in degrees between from and to.| :material-check: |:material-check: |
 | SmoothDamp	| Gradually changes a vector towards a desired goal over time.| :material-check: |:material-check: |
 
-| **Operators**  | **Description**  |  **Mathf**     |  **FMath**   | 
+| **Operators**  | **Description**  |  **Vector2**     |  **FVector2**   | 
 | ----------- |----------- | ----------- |------------------------------------ |
 | operator -	| Subtracts one vector from another.| :material-check: |:material-check: |
 | operator *	| Multiplies a vector by a number.| :material-check: |:material-check: |

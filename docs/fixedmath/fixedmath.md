@@ -1,9 +1,9 @@
 A C# fixed point math library for vector and matrix computation.
 
-This library is designed to match the unity Mathf class as well as the unity vector and matrix types. 
+This library is designed to match the Unity Mathf class as well as the Unity vector and matrix types. 
 
 
-| `Parallel`       | `Unity`                          |
+| **Parallel Math**       | **Unity**                          |
 | ----------- | ------------------------------------ |
 | `FMath`       |  `Mathf`  |
 | `FFloat`       |  `float`  |
