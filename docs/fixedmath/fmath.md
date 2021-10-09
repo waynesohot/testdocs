@@ -3,7 +3,7 @@ A collection of common math functions.
 
 | **Static Properties**  | **Description**  |  **Mathf**     |  **FMath**   | 
 | ----------- |----------- | ----------- |------------------------------------ |
-| Deg2Rad       |Degrees-to-radians conversion constant (Read Only).| :material-check: |:material-check: |
+| [Deg2Rad][1]       |Degrees-to-radians conversion constant (Read Only).| :material-check: |:material-check: |
 | Epsilon       |A tiny floating point value (Read Only).| :material-check: |:material-check:[^1] |
 | Infinity    |A representation of positive infinity (Read Only).| :material-check: |:material-close:[^2] |
 | NegativeInfinity       |A representation of negative infinity (Read Only).| :material-check: |:material-close:[^3] |
@@ -64,3 +64,5 @@ A collection of common math functions.
 [^1]: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 [^2]: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 [^3]: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+[1]: reference/fmath-deg2rad.md

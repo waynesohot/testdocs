@@ -38,12 +38,25 @@ nav:
       - FVector3: fixedmath/fvector3.md
       - FQuaternion: fixedmath/fquaternion.md
       - FMatrix4x4: fixedmath/fmatrix4x4.md
+    - Scripting:
+      - FMath.Deg2Rad: fixedmath/reference/fmath-deg2rad.md
 extra_css:
   - stylesheets/extra.css
 theme:
   name: material
   palette:
-    scheme: slate
+    - scheme: default
+      primary: red
+      accent: red
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+    - scheme: slate
+      primary: red
+      accent: red
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
   features:
     - navigation.tabs
 
