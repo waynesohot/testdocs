@@ -7,13 +7,12 @@
     {
         void OnImport(SWBytes buffer);
         void OnExport(SWBytes buffer);
-        FrameSyncDebugItemGroup OnExportDebugInfo();
     }
     ```
 
 ## **Description**
 
-Called by the FrameSyncEngine to export/import the data of the `FrameSyncBehaviour`.
+Called by the FrameSyncEngine to export/import the data of the `FrameSyncBehaviour`. You should implement this interface in a `MonoBehaviour` component if it contains game states that needs to be restored for deterministic simulation.
 
 ## **Example**
 === "C#"

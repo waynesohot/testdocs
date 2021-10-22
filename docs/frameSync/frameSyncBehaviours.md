@@ -4,7 +4,7 @@ The `FrameSyncBehaviour` class derives from `MonoBehaviour`. It acts as the uniq
 
 !!! info
 
-    To create game logic, implement [IFrameSyncStart][1], [IFrameSyncPlayerUpdate][2], [IFrameSyncComputerUpdate][3], and [IFrameSyncDataContainer][3] interfaces in your `MonoBehaviour` scripts and attach them to your GameObjects.
+    To implement game logic and to store game states, implement [IFrameSyncStart][1], [IFrameSyncPlayerUpdate][2], [IFrameSyncComputerUpdate][3], and [IFrameSyncDataContainer][3] interfaces in your `MonoBehaviour` component scripts and attach them to your networked GameObjects.
 
 
 ![img](./../../assets/framesync/FrameSyncBehaviours.png){: width=512 }

@@ -31,14 +31,14 @@ nav:
     - FrameSyncEngine: 
       - FrameSyncEngineController: frameSync/frameSyncEngine/frameSyncEngineController.md
       - Offline Mode: frameSync/frameSyncEngine/offline.md
+    - FrameSyncBehaviours: frameSync/frameSyncBehaviours.md
     - Game Logic: 
-      - FrameSyncBehaviours: frameSync/frameSyncBehaviours.md
       - IFrameSyncStart: frameSync/GameLogic/IFrameSyncStart.md
       - IFrameSyncPlayerUpdate: frameSync/GameLogic/IFrameSyncPlayerUpdate.md
       - IFrameSyncComputerUpdate: frameSync/GameLogic/IFrameSyncComputerUpdate.md
-      - IFrameSyncDataContainer: frameSync/GameLogic/IFrameSyncDataContainer.md
-    - Important Classes:
-      - FrameSyncAgent: frameSync/importantClass/frameSyncAgent.md
+    - Game States:
+      - IFrameSyncDataContainer: frameSync/GameStates/IFrameSyncDataContainer.md
+      - IFrameSyncSnapshot: frameSync/GameStates/IFrameSyncSnapshot.md
   - Physics2D:
     - Overview: physics2d/physics2D.md
     - Classes:
