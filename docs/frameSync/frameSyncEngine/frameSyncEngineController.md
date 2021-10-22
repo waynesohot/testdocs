@@ -1,8 +1,13 @@
 # **FrameSyncEngineController**
 Your code interacts with the `FrameSyncEngine` by implementing a class derives from the built-in class `FrameSyncEngineController`.
 
+![img](./../../assets/framesync/FrameSyncEngineController.png){: width=512 }
+
 ## **How does it work?**
 The base `FrameSyncEngineController` is a subclass of `MonoBehaviour` and implements the `Awake()`, `Start()`, `FixedUpdate()`, `Update()`, `OnDestroy()`, and `OnGUI()` methods. Please see the chart below.
+
+![img](./../../assets/framesync/controller.png){: width=1080 }
+
 
 ???+ info
 
@@ -10,7 +15,6 @@ The base `FrameSyncEngineController` is a subclass of `MonoBehaviour` and implem
     
     Please check [Offline Mode][15] for details.
 
-![img](./../../assets/framesync/controller.png){: width=1080 }
 
 ## **Events**
 The `FrameSyncEngineController` provides a collection of useful events which allow you to customize the behaviour of the FrameSyncEngine for your game.

@@ -25,9 +25,11 @@ nav:
       - Rollback: tutorial/pong/Rollback.md
   - FrameSync:
     - Overview: frameSync/framesync.md
+    - Game Logic: frameSync/gamelogic.md
     - FrameSyncEngine: 
       - FrameSyncEngineController: frameSync/frameSyncEngine/frameSyncEngineController.md
       - Offline Mode: frameSync/frameSyncEngine/offline.md
+    - StaticFrameSyncBehaviour: frameSync/staticFrameSyncBehaviour/staticFrameSyncBehaviour.md
     - Important Classes:
       - FrameSyncAgent: frameSync/importantClass/frameSyncAgent.md
   - Physics2D:
