@@ -3,6 +3,16 @@ Your code interacts with the `FrameSyncEngine` by implementing a class derives f
 
 ![img](./../../assets/framesync/FrameSyncEngineController.png){: width=512 }
 
+## **Properties**
+
+| **Name**       | **Function**                          |
+| ----------- | ------------------------------------ |
+| Engine Mode     |  FrameSyncEngine mode, the options are: `Offline`, `Online`, and `OnlineRollback`.  |
+| Input Settings       | The [input settings][16] ScriptableObject.|
+| Prefab Registry      | The [Prefab Registry][17] ScriptableObject. |
+| Offline Player Count   | The number of players in offline mode. |
+| Show Stats      | If enabled, `FrameDelay`, `InputDelay` and `Frame Buffered` will be displayed at the top left corner.  |
+
 ## **How does it work?**
 The base `FrameSyncEngineController` is a subclass of `MonoBehaviour` and implements the `Awake()`, `Start()`, `FixedUpdate()`, `Update()`, `OnDestroy()`, and `OnGUI()` methods. Please see the chart below.
 
@@ -74,3 +84,6 @@ The `FrameSyncEngineController` provides a collection of useful events which all
 [14]: events/OnFrameSyncReadyToRun.md
 
 [15]: offline.md
+
+[16]: ../InputSettings.md
+[17]: ../PrefabRegistry.md
