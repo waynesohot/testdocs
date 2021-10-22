@@ -1,6 +1,10 @@
 # **Input Settings**
 
-Input Settigns declares the inputs that your game uses. 
+InputSettings declare the inputs that your game uses. 
+
+The `FrameSyncEngine` uses InputSettings to create player Input frames
+
+## **Creating an InputSettings asset**
 
 To create an InputSettings for your game, right click in the project browser, and select `Create->SocketWeaver->FrameSync->InputSettings`.
 

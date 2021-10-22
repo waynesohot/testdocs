@@ -13,7 +13,7 @@ Your code interacts with the `FrameSyncEngine` by implementing a class derives f
 | Offline Player Count   | The number of players in offline mode. |
 | Show Stats      | If enabled, `FrameDelay`, `InputDelay` and `Frame Buffered` will be displayed at the top left corner.  |
 
-## **How does it work?**
+## **Interaction with Unity**
 The base `FrameSyncEngineController` is a subclass of `MonoBehaviour` and implements the `Awake()`, `Start()`, `FixedUpdate()`, `Update()`, `OnDestroy()`, and `OnGUI()` methods. Please see the chart below.
 
 ![img](./../../assets/framesync/controller.png){: width=1080 }
@@ -67,6 +67,7 @@ The `FrameSyncEngineController` provides a collection of useful events which all
 | **Engine State Events**       |                     |
 | ----------- | ------------------------------------ |
 | [OnFrameSyncReadyToRun][14]       |  Called when the FrameSyncEngine enters the running state  |
+
 
 [1]: events/OnFrameSyncCollectPlayerInput.md
 [2]: events/OnFrameSyncNewPlayerConnected.md

@@ -25,7 +25,7 @@ nav:
       - Rollback: tutorial/pong/Rollback.md
   - FrameSync:
     - Overview: frameSync/framesync.md
-    - Deterministic: frameSync/gamelogic.md
+    - Deterministic: frameSync/deterministic.md
     - Input Settings: frameSync/InputSettings.md
     - Prefab Registry: frameSync/PrefabRegistry.md
     - FrameSyncEngine: 
@@ -43,7 +43,7 @@ nav:
     - Overview: physics2d/physics2D.md
     - Classes:
       - ParallelBoxCollider2D: physics2d/parallelBoxCollider2D.md
-  - Fixed Math:
+  - FixedMath:
     - Overview: fixedmath/fixedmath.md
     - Classes:
       - FMath: fixedmath/fmath.md

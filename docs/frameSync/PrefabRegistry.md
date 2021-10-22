@@ -1,6 +1,10 @@
 # **Prefab Registry**
 
-Prefab Registry declares the prefabs that your game instantiates and destroys at runtime.
+Prefab Registry declares the prefabs that your game instantiates and destroys at runtime. 
+
+The `FrameSyncEninge` uses the Prefab Registry to identify a prefab at runtime.
+
+## **Creating a PrefabRegistry asset**
 
 To create a Prefab Registry for your game, right click in the project browser, and select `Create->SocketWeaver->FrameSync->Prefab Registry`.
 
