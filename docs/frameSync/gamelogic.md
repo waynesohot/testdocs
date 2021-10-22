@@ -1,6 +1,5 @@
-# **Game Logic**
+# **Deterministic**
 
-## **Deterministic**
 You game logic must be deterministic to the bit-level. The FrameSync library only sends and manages players inputs. This means that given the same input, your game logic should produce the exact same game states on all supported platforms.
 
 ### **Challenages to Achieve Cross-platform Deterministic**

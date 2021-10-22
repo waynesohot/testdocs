@@ -25,11 +25,18 @@ nav:
       - Rollback: tutorial/pong/Rollback.md
   - FrameSync:
     - Overview: frameSync/framesync.md
-    - Game Logic: frameSync/gamelogic.md
+    - Deterministic: frameSync/gamelogic.md
+    - Input Settings: frameSync/InputSettings.md
+    - Prefab Registry: frameSync/PrefabRegistry.md
     - FrameSyncEngine: 
       - FrameSyncEngineController: frameSync/frameSyncEngine/frameSyncEngineController.md
       - Offline Mode: frameSync/frameSyncEngine/offline.md
-    - StaticFrameSyncBehaviour: frameSync/staticFrameSyncBehaviour/staticFrameSyncBehaviour.md
+    - Game Logic: 
+      - FrameSyncBehaviours: frameSync/frameSyncBehaviours.md
+      - IFrameSyncStart: frameSync/GameLogic/IFrameSyncStart.md
+      - IFrameSyncPlayerUpdate: frameSync/GameLogic/IFrameSyncPlayerUpdate.md
+      - IFrameSyncComputerUpdate: frameSync/GameLogic/IFrameSyncComputerUpdate.md
+      - IFrameSyncDataContainer: frameSync/GameLogic/IFrameSyncDataContainer.md
     - Important Classes:
       - FrameSyncAgent: frameSync/importantClass/frameSyncAgent.md
   - Physics2D:
