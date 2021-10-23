@@ -31,6 +31,8 @@ nav:
     - FrameSyncEngine: 
       - FrameSyncEngineController: frameSync/frameSyncEngine/frameSyncEngineController.md
       - Offline Mode: frameSync/frameSyncEngine/offline.md
+      - Online Mode: frameSync/frameSyncEngine/online.md
+      - Rollback Mode: frameSync/frameSyncEngine/rollback.md
     - FrameSyncBehaviours: frameSync/frameSyncBehaviours.md
     - Game Logic: 
       - IFrameSyncStart: frameSync/GameLogic/IFrameSyncStart.md

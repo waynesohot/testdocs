@@ -21,9 +21,9 @@ The base `FrameSyncEngineController` is a subclass of `MonoBehaviour` and implem
 
 ???+ info
 
-    The FrameSync runloop execution order is different for different FrameSyncEngine modes.
+    Different FrameSyncEngine modes have different FrameSync runloop execution order.
     
-    Please check [Offline Mode][15] for details.
+    Please check [Offline Mode][15], [Online Mode][19], [Prediction/Rollback Mode][20] for details.
 
 
 ## **Events**
@@ -61,12 +61,13 @@ The `FrameSyncEngineController` provides a collection of useful events which all
 
 | **Game State Restoration Events**       |                     |
 | ----------- | ------------------------------------ |
+| [OnFrameSyncWillRestoreGameStates][18]       |  Called when the client connects to a game and needs to restore the game states  |
 | [OnFrameSyncDidCreateGameObjectForRestoration][12]       |  Called after the FrameSyncEngine creates a GameObject for restoration.  |
 | [OnFrameSyncWillDestroyGameObjectForRestoration][13]       |  Called before the FrameSyncEngine destroys a GameObject for restoration.  |
 
-| **Engine State Events**       |                     |
+| **FrameSyncGame Events**       |                     |
 | ----------- | ------------------------------------ |
-| [OnFrameSyncReadyToRun][14]       |  Called when the FrameSyncEngine enters the running state  |
+| [OnFrameSyncGameStateChanged][14]       |  Called when the FrameSyncGame state changes.  |
 
 
 [1]: events/OnFrameSyncCollectPlayerInput.md
@@ -82,9 +83,12 @@ The `FrameSyncEngineController` provides a collection of useful events which all
 [11]: events/OnFrameSyncGetCustomHashCode.md
 [12]: events/OnFrameSyncDidCreateGameObjectForRestoration.md
 [13]: events/OnFrameSyncWillDestroyGameObjectForRestoration.md
-[14]: events/OnFrameSyncReadyToRun.md
+[14]: events/OnFrameSyncGameStateChanged.md
+[18]: events/OnFrameSyncWillRestoreGameStates.md
 
 [15]: offline.md
+[19]: online.md
+[20]: rollback.md
 
 [16]: ../InputSettings.md
 [17]: ../PrefabRegistry.md
