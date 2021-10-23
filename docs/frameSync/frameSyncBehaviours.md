@@ -33,4 +33,4 @@ Designed for GameObjects that are dynamically instantiated or destroyed.
 [1]: GameLogic/IFrameSyncStart.md
 [2]: GameLogic/IFrameSyncPlayerUpdate.md
 [3]: GameLogic/IFrameSyncComputerUpdate.md
-[4]: GameLogic/IFrameSyncDataContainer.md
+[4]: GameStates/IFrameSyncDataContainer.md

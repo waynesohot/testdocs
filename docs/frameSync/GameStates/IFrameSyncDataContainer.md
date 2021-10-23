@@ -12,7 +12,7 @@
 
 ## **Description**
 
-Called by the FrameSyncEngine to export/import the data of the `FrameSyncBehaviour`. You should implement this interface in a `MonoBehaviour` component if it contains game states that needs to be restored for deterministic simulation.
+Called by the FrameSyncEngine to export/import the data of the `FrameSyncBehaviour`. You should implement this interface in a `MonoBehaviour` component if it contains game states that needs to be restored for deterministic simulation after a rollback and 
 
 ## **Example**
 === "C#"
