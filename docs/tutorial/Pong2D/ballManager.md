@@ -15,7 +15,7 @@ Replace the content of the script with the following. Note that the BallManager 
 
     namespace SWExample.Pong
     {
-        public class PongBallManager : MonoBehaviour, IFrameSyncComputerUpdate
+        public class BallManager : MonoBehaviour, IFrameSyncComputerUpdate
         {
             public bool player1Ready = false;
             public bool player2Ready = false;

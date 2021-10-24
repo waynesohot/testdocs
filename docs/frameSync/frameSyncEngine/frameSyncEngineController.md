@@ -68,7 +68,7 @@ The `FrameSyncEngineController` provides a collection of useful events which all
 | **FrameSyncGame Events**       |                     |
 | ----------- | ------------------------------------ |
 | [OnFrameSyncGameStateChanged][14]       |  Called when the FrameSyncGame state changes.  |
-
+| [OnFrameSyncGameInitialize][21]       |  Called before the FrameSyncGame starts.  |
 
 [1]: events/OnFrameSyncCollectPlayerInput.md
 [2]: events/OnFrameSyncNewPlayerConnected.md
@@ -85,6 +85,7 @@ The `FrameSyncEngineController` provides a collection of useful events which all
 [13]: events/OnFrameSyncWillDestroyGameObjectForRestoration.md
 [14]: events/OnFrameSyncGameStateChanged.md
 [18]: events/OnFrameSyncWillRestoreGameStates.md
+[21]: events/OnFrameSyncGameInitialize.md
 
 [15]: offline.md
 [19]: online.md

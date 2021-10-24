@@ -6,13 +6,15 @@ nav:
   - Tutorial:
     - Pong 2D:
       - Overview: tutorial/Pong2D/overview.md
-      - GetStarted: tutorial/Pong2D/gameScene.md
+      - Get Started: tutorial/Pong2D/gameScene.md
       - Set Up The Scene: tutorial/Pong2D/setup.md
       - Declare Inputs for Your Game: tutorial/Pong2D/inputSettings.md
       - FrameSyncEngineController: tutorial/Pong2D/frameSyncEngineController.md
       - StaticFrameSyncBehaviour: tutorial/Pong2D/staticFrameSyncBehaviour.md
       - Ball Manager: tutorial/Pong2D/ballManager.md
       - Paddle Movement: tutorial/Pong2D/paddleMovement.md
+      - Playing Offline: tutorial/Pong2D/playOffline.md
+      - Playing Online: tutorial/Pong2D/playOnline.md
     - Pong Game:
       - Overview: tutorial/pong/overview.md
       - Physics 2D: tutorial/pong/parallel2d.md
