@@ -14,7 +14,7 @@ Replace the content of the script with the following. Note that the PaddleMoveme
 
     namespace SWExample.Pong
     {
-        public class PaddleMovement : FrameSyncEngineController
+        public class PaddleMovement : MonoBehaviour, IFrameSyncPlayerUpdate
         {
             public FFloat speed = FFloat.FromDivision(5, 1);
 
