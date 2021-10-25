@@ -1,4 +1,4 @@
-site_name: FrameSync
+site_name: Documentation
 nav:
   - Get Started:
     - Overview: index.md
@@ -69,6 +69,8 @@ nav:
 extra_css:
   - stylesheets/extra.css
 theme:
+  # logo: assets/logo-light.png
+  favicon: assets/favicon.png
   name: material
   palette:
     - scheme: default

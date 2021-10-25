@@ -5,7 +5,7 @@
     ``` c#
     public interface IFrameSyncPlayerUpdate
     {
-        void OnPlayerUpdate(FrameSyncPlayer player, FrameSyncUpdateType frameSyncUpdateType);
+        void OnPlayerUpdate(FrameSyncPlayer player, FrameSyncGame game, FrameSyncUpdateType frameSyncUpdateType);
     }
     ```
 
@@ -29,7 +29,7 @@ Called by the FrameSyncEngine to update the player owned `FrameSyncBehaviour` du
 
         public FTransform fTransform;
 
-        public void OnPlayerUpdate(FrameSyncPlayer player, FrameSyncUpdateType frameSyncUpdateType)
+        public void OnPlayerUpdate(FrameSyncPlayer player, FrameSyncGame game, FrameSyncUpdateType frameSyncUpdateType)
         {
             FFloat y = player.GetInputY();
             FVector3 displacement = speed * FrameSyncTime.fixedDeltaTime * new FVector3(FFloat.zero, y, FFloat.zero);

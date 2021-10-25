@@ -2,9 +2,11 @@
 
 Next, you will implement the paddle movement logic.
 
-Add a new script called `PaddleMovement` to the Paddle GameObject.
+- Add a new script called `PaddleMovement` to the Paddle GameObject.
 
-Replace the content of the script with the following. Note that the PaddleMovement implements the IFrameSyncPlayerUpdate interface.
+- Replace the content of the script with the following. Note that the PaddleMovement implements the IFrameSyncPlayerUpdate interface.
+
+- Drag the FTransform component of the Paddle GameObject to the PaddleMovement component.
 
 === "C#"
     ``` c#
@@ -20,7 +22,7 @@ Replace the content of the script with the following. Note that the PaddleMoveme
 
             public FTransform fTransform;
 
-            public void OnPlayerUpdate(FrameSyncPlayer player, FrameSyncUpdateType frameSyncUpdateType)
+            public void OnPlayerUpdate(FrameSyncPlayer player, FrameSyncGame game, FrameSyncUpdateType frameSyncUpdateType)
             {
                 //read the y input of the paddle owner player
                 FFloat y = player.GetInputY();
@@ -35,9 +37,9 @@ Replace the content of the script with the following. Note that the PaddleMoveme
                 if(player.GetInputReady())
                 {
                     //notify the BallManager that the player is ready
-                    PongBallManager pongBallManager = FindObjectOfType<PongBallManager>();
+                    BallManager ballManager = FindObjectOfType<BallManager>();
                     
-                    pongBallManager.PlayerIsReady(player);
+                    ballManager.PlayerIsReady(player);
                 }
             }
         }

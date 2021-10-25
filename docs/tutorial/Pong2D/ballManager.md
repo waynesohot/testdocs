@@ -2,9 +2,11 @@
 
 Next, you'll implment the game flow logic.
 
-Add a new script called BallManager to the Ball GameObject.
+- Add a new script called BallManager to the Ball GameObject.
 
-Replace the content of the script with the following. Note that the BallManager implements the IFrameSyncComputerUpdate interface.
+- Replace the content of the script with the following. Note that the BallManager implements the IFrameSyncComputerUpdate interface.
+
+- Drag the FTransform component and the FRigibody2D component of the Ball GameObject to the BallManager component.
 
 === "C#"
     ``` c#
@@ -30,7 +32,7 @@ Replace the content of the script with the following. Note that the BallManager 
             public FTransform ballTransform;
             public FRigidbody2D ballRigidbody;
 
-            public void OnComputerUpdate(FrameSyncUpdateType frameSyncUpdateType)
+            public void OnComputerUpdate(FrameSyncGame game, FrameSyncUpdateType frameSyncUpdateType)
             {
                 //check boundary for every FrameSync frame.
                 if (ballTransform.position.x < -boundary)

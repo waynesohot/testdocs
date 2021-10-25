@@ -5,7 +5,7 @@
     ``` c#
     public interface IFrameSyncComputerUpdate
     {
-        void OnComputerUpdate(FrameSyncUpdateType frameSyncUpdateType);
+        void OnComputerUpdate(FrameSyncGame game, FrameSyncUpdateType frameSyncUpdateType);
     }
     ```
 
@@ -28,7 +28,7 @@ Called by the FrameSyncEngine to update the computer owned `FrameSyncBehaviour` 
 
         public FTransform fTransform;
 
-        public void OnComputerUpdate(FrameSyncUpdateType frameSyncUpdateType)
+        public void OnComputerUpdate(FrameSyncGame game, FrameSyncUpdateType frameSyncUpdateType)
         {
             FFloat diretion = FFloat.zero;
 
