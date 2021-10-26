@@ -15,6 +15,9 @@ nav:
       - Paddle Movement: tutorial/Pong2D/paddleMovement.md
       - Playing Offline: tutorial/Pong2D/playOffline.md
       - Playing Online: tutorial/Pong2D/playOnline.md
+    - SocCar 3D:
+      - Overview: tutorial/SocCar/overview.md
+      - Get Started: tutorial/SocCar/getStarted.md
     - Pong Game:
       - Overview: tutorial/pong/overview.md
       - Physics 2D: tutorial/pong/parallel2d.md

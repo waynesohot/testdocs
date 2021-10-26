@@ -10,11 +10,11 @@ Pong 2D is a fully functional multiplayer game made with Unity. It is deisgned t
 
 In these step-by-step tutorials, you will:
 
-- Learn how to use the FPhysics2D engine
+- Use the FPhysics2D engine
 - Create a classic pong game that is playable offline and online
 - Create an InputSettings scriptableObject for your game
 - Create a custom FrameSyncEngineController that samples local players inputs and updates the FPhsics2D engine.
-- learn how to read networked inputs
+- Read networked inputs
 - Use the FrameSyncRandom API to generate deterministic pseudo random numbers
 
 By following these simple tutorials, you will learn the basics of the FrameSync library and will be ready to explore more advanced features that the library provides.
