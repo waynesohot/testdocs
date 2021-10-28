@@ -3,7 +3,7 @@
 SocCar is a Rocket League like 3D vehicular soccer game. It is deisgned to demonstrate the predition/rollback simulation feature of the FrameSync Library.
 
 !!! note ""
-
+    
     The tutorials should take less than **30** mintues to complete.
 
 In these step-by-step tutorials, you will:

@@ -22,8 +22,8 @@ Next, you will create the following Rigidbodies.
 Name    | Body Type | Description
 --------| --------- | ----------------
 Ball    | Dynamic   | Controlled by physics
-Paddles | Kinematic | Controlled by players
-Walls   | Staic     | Do not move
+Cars | Dynamic | Controlled by players
+Arena   | Staic     | Does not move
 
 ## **Ball**
 
@@ -54,3 +54,9 @@ Walls   | Staic     | Do not move
 You can change the color of the sprite to your liking. The scene should look like.
 
 ![img](./../../assets/pong2d/finaltouch.png){: width=1080 }
+
+## **Payment plan**
+- 4.95/month ccu 0-20 0.04/GB (for development ccu=0.25)
+- 19.95/month ccu 0-100 0.04/GB  (just launched ccu=0.20)
+- 79.95/month ccu 0-500 0.04/GB (profiting ccu=0.16)
+- 249.95/month ccu 0-2000 0.04/GB (successful ccu=0.12)

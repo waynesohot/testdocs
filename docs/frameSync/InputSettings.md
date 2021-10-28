@@ -17,7 +17,7 @@ To create an InputSettings for your game, right click in the project browser, an
 - To add a new input, select the `+` icon of the `Inputs` list.
 - To remove an input, select the input and select the `-` icon of the `Inputs` list.
 - The name of an input must be unique. You cannot have two or more inputs with the same name.
-- FrameSync supports inputs of type: `Trigger`, `Bool`, `Int`, `Float`, `Vector2`, and `Vector3`.
+- FrameSync supports inputs of type: `Trigger`, `Bool`, `Int`, `float`, `Vector2`, and `Vector3`.
 - Make sure to optimize the input data size by adjusting the input's min, max, and resolution.
 
 ## **Saving and Code Generation**

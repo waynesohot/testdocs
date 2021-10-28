@@ -49,9 +49,11 @@ nav:
       - Rollback Mode: frameSync/frameSyncEngine/rollback.md
     - FrameSyncBehaviours: frameSync/frameSyncBehaviours.md
     - Game Logic: 
-      - IFrameSyncStart: frameSync/GameLogic/IFrameSyncStart.md
+      - Overview: frameSync/GameLogic/overview.md
+      - IFrameSyncOnStart: frameSync/GameLogic/IFrameSyncOnStart.md
       - IFrameSyncPlayerUpdate: frameSync/GameLogic/IFrameSyncPlayerUpdate.md
       - IFrameSyncComputerUpdate: frameSync/GameLogic/IFrameSyncComputerUpdate.md
+      - IFrameSyncTimerEventHandler: frameSync/GameLogic/IFrameSyncTimerEventHandler.md
     - Game States:
       - IFrameSyncDataContainer: frameSync/GameStates/IFrameSyncDataContainer.md
       - IFrameSyncSnapshot: frameSync/GameStates/IFrameSyncSnapshot.md
