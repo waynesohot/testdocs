@@ -26,6 +26,10 @@ nav:
       - Game Flow: tutorial/Soccer/gameFlow.md
       - Goal: tutorial/Soccer/goal.md
       - Play Online: tutorial/Soccer/playOnline.md
+      - HUD: tutorial/Soccer/hud.md
+      - Display Score: tutorial/Soccer/displayScore.md
+      - Reset to Start Position: tutorial/Soccer/reset.md
+      - FrameSyncTimer: tutorial/Soccer/frameSyncTimer.md
     - Pong Game:
       - Overview: tutorial/pong/overview.md
       - Physics 2D: tutorial/pong/parallel2d.md

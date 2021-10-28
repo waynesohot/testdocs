@@ -10,9 +10,13 @@ Next, you'll implment the game flow logic.
 === "C#"
     ``` c#
     using SocketWeaver.FrameSync;
+    using SocketWeaver.FixedMath;
     using UnityEngine;
+    using UnityEngine.UI;
+    using SocketWeaver.FPhysics3D;
+    using SocketWeaver.Core;
 
-    namespace SWExample.Pong
+    namespace SWExample.Soccer
     {
         public class SoccerGameFlow : MonoBehaviour
         {
@@ -25,7 +29,7 @@ Next, you'll implment the game flow logic.
                 Debug.Log($"PlayerScored player={player.playerId}");
 
                 //update player scores
-                
+        
                 if (player.playerId == 1)
                 {
                     player1Score++;
