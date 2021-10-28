@@ -2,11 +2,11 @@
 
 Next, you'll implment the game flow logic.
 
-- Add a new script called BallManager to the Ball GameObject.
+- Add a new script called `BallManager` to the `Ball` GameObject.
 
-- Replace the content of the script with the following. Note that the BallManager implements the IFrameSyncComputerUpdate interface.
+- Replace the content of the script with the following. Note that the BallManager implements the `IFrameSyncComputerUpdate` interface.
 
-- Drag the FTransform component and the FRigibody2D component of the Ball GameObject to the BallManager component.
+- Drag the `FTransform` component and the `FRigibody2D` component of the Ball GameObject to the `ballTransform` and `ballRigidbody` field.
 
 === "C#"
     ``` c#

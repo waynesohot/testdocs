@@ -6,7 +6,7 @@ Next, you will implement the paddle movement logic.
 
 - Replace the content of the script with the following. Note that the PaddleMovement implements the IFrameSyncPlayerUpdate interface.
 
-- Drag the FTransform component of the Paddle GameObject to the PaddleMovement component.
+- Drag the `FTransform` component of the Paddle GameObject to the `fTransform` field in the inspector.
 
 === "C#"
     ``` c#

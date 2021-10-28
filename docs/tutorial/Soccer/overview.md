@@ -1,6 +1,6 @@
-# **SocCar**
+# **Soccer**
 
-SocCar is a Rocket League like 3D vehicular soccer game. It is deisgned to demonstrate the predition/rollback simulation feature of the FrameSync Library.
+Soccer is a Rocket League like 3D vehicular soccer game. It is deisgned to demonstrate the predition/rollback simulation feature of the FrameSync Library.
 
 !!! note ""
     

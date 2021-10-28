@@ -15,9 +15,17 @@ nav:
       - Paddle Movement: tutorial/Pong2D/paddleMovement.md
       - Playing Offline: tutorial/Pong2D/playOffline.md
       - Playing Online: tutorial/Pong2D/playOnline.md
-    - SocCar 3D:
-      - Overview: tutorial/SocCar/overview.md
-      - Get Started: tutorial/SocCar/getStarted.md
+    - Soccer 3D:
+      - Overview: tutorial/Soccer/overview.md
+      - Get Started: tutorial/Soccer/getStarted.md
+      - Set Up The Scene: tutorial/Soccer/setup.md
+      - Camera: tutorial/Soccer/cameraFollow.md
+      - Declare Inputs for Your Game: tutorial/Soccer/inputSettings.md
+      - FrameSyncEngineController: tutorial/Soccer/frameSyncEngineController.md
+      - Car Controller: tutorial/Soccer/carController.md
+      - Game Flow: tutorial/Soccer/gameFlow.md
+      - Goal: tutorial/Soccer/goal.md
+      - Play Online: tutorial/Soccer/playOnline.md
     - Pong Game:
       - Overview: tutorial/pong/overview.md
       - Physics 2D: tutorial/pong/parallel2d.md
