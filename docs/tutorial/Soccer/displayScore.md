@@ -2,13 +2,13 @@
 
 In this section, you will update the HUD to display the scores.
 
-- Add a `StaticFrameSyncBehaviour` to the `GameFlow` GameObject. We want to access the `FrameSyncGame` in the `SoccerGameFlow` script to get the time elapsed since the game starts.
+- Add a `StaticFrameSyncBehaviour` to the `GameFlow` GameObject. We want to access the `FrameSyncGame` in the `SoccerGameFlow` script to get the time elapsed since the game started.
 - Set the `Owner` of the `StaticFrameSyncBehaviour` to computer because the `GameFlow` is not owned by any player.
-
-Update the `SoccerGameFlow` to the follow:
+- Add the highlighted lines to the `SoccerGameFlow` script.
+- Drag the `Time`, `Player1`, and `Player2` text to the SoccerGameFlow inspector.
 
 === "C#"
-    ``` c# hl_lines="6 8-11 17-37"
+    ``` c# hl_lines="10 12-15 21-34"
     using SocketWeaver.FrameSync;
     using SocketWeaver.FixedMath;
     using UnityEngine;
@@ -18,7 +18,7 @@ Update the `SoccerGameFlow` to the follow:
 
     namespace SWExample.Soccer
     {
-        public class SoccerGameFlow : MonoBehaviour, IFrameSyncOnStart, IFrameSyncComputerUpdate
+        public class SoccerGameFlow : MonoBehaviour, IFrameSyncComputerUpdate
         {
             [Header("UI")]
             public Text timeText;
@@ -28,13 +28,6 @@ Update the `SoccerGameFlow` to the follow:
             [Header("Scores")]
             public int player1Score;
             public int player2Score;
-
-            StaticFrameSyncBehaviour _frameSyncBehaviour;
-
-            public void OnStart(FrameSyncBehaviour frameSyncBehaviour)
-            {
-                _frameSyncBehaviour = frameSyncBehaviour;
-            }
 
             public void OnComputerUpdate(FrameSyncGame game)
             {
@@ -75,4 +68,4 @@ Update the `SoccerGameFlow` to the follow:
 ## **Test**
 Hit **Play**, you should see the time text and the score texts are updated corretly.
 
-![img](./../../assets/soccer/testplay.gif){: width=1080 }
+![img](./../../assets/soccer/score.gif){: width=1080 }

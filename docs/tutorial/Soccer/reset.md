@@ -5,7 +5,7 @@ Now, the ball and the cars are not getting reset to their starting positions.
 Add the highlighted lines to the `SoccerGameFlow` script.
 
 === "C#"
-    ``` c# hl_lines="17-25 69 72-89"
+    ``` c# hl_lines="17-25 62 65-82"
     using SocketWeaver.FrameSync;
     using SocketWeaver.FixedMath;
     using UnityEngine;
@@ -15,7 +15,7 @@ Add the highlighted lines to the `SoccerGameFlow` script.
 
     namespace SWExample.Soccer
     {
-        public class SoccerGameFlow : MonoBehaviour, IFrameSyncOnStart, IFrameSyncComputerUpdate
+        public class SoccerGameFlow : MonoBehaviour, IFrameSyncComputerUpdate
         {
             [Header("UI")]
             public Text timeText;
@@ -35,13 +35,6 @@ Add the highlighted lines to the `SoccerGameFlow` script.
             [Header("Scores")]
             public int player1Score;
             public int player2Score;
-
-            StaticFrameSyncBehaviour _frameSyncBehaviour;
-
-            public void OnStart(FrameSyncBehaviour frameSyncBehaviour)
-            {
-                _frameSyncBehaviour = frameSyncBehaviour;
-            }
 
             public void OnComputerUpdate(FrameSyncGame game)
             {
@@ -107,5 +100,5 @@ Add the highlighted lines to the `SoccerGameFlow` script.
 ## **Test**
 Hit **Play**, you should see that the balls and the cars get reset to their starting positions.
 
-![img](./../../assets/soccer/testplay.gif){: width=1080 }
+![img](./../../assets/soccer/reset.gif){: width=1080 }
 

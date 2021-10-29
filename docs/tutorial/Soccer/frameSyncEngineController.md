@@ -6,6 +6,7 @@ In this section, you will create a subclass of the built-in FrameSyncEngineContr
 - Create a new empty GameObject and attach the `SoccerFrameSyncEngineController` to it.
 - In the `SoccerFrameSyncEngineController` script, replace its contents with the following.
 - Drag the `FPhysics3DManager` into the physicsEngine field in the inspector.
+- Drag the InputSettings asset into the `Input Settings` field.
 
 === "C#"
     ``` c#

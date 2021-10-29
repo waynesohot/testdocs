@@ -5,7 +5,8 @@ The FrameSyncEngine is the core of the FrameSync library. You will create a subc
 - Create a new script and name it `PongFrameSyncEngineController`.
 - Create a new empty GameObject and attach the `PongFrameSyncEngineController` to it.
 - In the `PongFrameSyncEngineController` script, remove `Start()` and `Update` and add the following code.
-- Drag the `FPhysics2DManager` into the physicsEngine field in the inspector.
+- Drag the `FPhysics2DManager` into the `physicsEngine` field in the inspector.
+- Drag the InputSettings asset into the `Input Settings` field.
 
 === "C#"
     ``` c#

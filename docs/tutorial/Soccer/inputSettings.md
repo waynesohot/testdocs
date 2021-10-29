@@ -14,7 +14,7 @@ In this section, you will create an InputSettings scriptableObject for your game
 In this game, the player uses the `WASD` to drive the car.
 
 - Select the `FrameSyncInputSettings` and configure it as shown below.
-![img](./../../assets/pong2d/inputSettings.png){: width=512 }
+![img](./../../assets/soccer/inputSettings.png){: width=512 }
 
 - Make sure that `Name Space` is set to `SWExample.Soccer` which is the c# namespace of this game.
 - Click the `Save` button.

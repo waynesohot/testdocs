@@ -1,11 +1,11 @@
 # **FrameSyncTimer**
 
-In this section, you will use FrameSyncTimer to add a delay before resetting the `Ball` and the `Car`s.
+In this section, you will use FrameSyncTimer to add a delay before resetting the `Ball` and the `Car`s to their starting positions.
 
 Update/Add the highlighted lines to the `SoccerGameFlow` script.
 
 === "C#"
-    ``` c# hl_lines="10 31-33 41 59-69 87"
+    ``` c# hl_lines="10 31-42 59-69 87"
     using SocketWeaver.FrameSync;
     using SocketWeaver.FixedMath;
     using UnityEngine;
@@ -40,7 +40,7 @@ Update/Add the highlighted lines to the `SoccerGameFlow` script.
             public FFloat resetGameTime = FFloat.FromDivision(5, 1);
             public int resetTimer;
 
-            StaticFrameSyncBehaviour _frameSyncBehaviour;
+            FrameSyncBehaviour _frameSyncBehaviour;
 
             public void OnStart(FrameSyncBehaviour frameSyncBehaviour)
             {
@@ -66,8 +66,8 @@ Update/Add the highlighted lines to the `SoccerGameFlow` script.
 
             public void OnTimerEvent(int timerId, FFloat elapsed)
             {
-                FrameSyncUpdateType updateType = _staticFrameSyncBehaviour.game.updateType;
-                int frameNumber = _staticFrameSyncBehaviour.game.frameNumber;
+                FrameSyncUpdateType updateType = _frameSyncBehaviour.game.updateType;
+                int frameNumber = _frameSyncBehaviour.game.frameNumber;
 
                 if (timerId == resetTimer)
                 {
@@ -120,4 +120,4 @@ Update/Add the highlighted lines to the `SoccerGameFlow` script.
 
 ## **Test**
 
-![img](./../../assets/soccer/testplay.gif){: width=1080 }
+![img](./../../assets/soccer/timer.gif){: width=1080 }

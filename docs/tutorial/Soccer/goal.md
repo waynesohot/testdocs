@@ -18,7 +18,7 @@ Replace the contents in the `SoccerGoal` script with the following.
     {
         public class SoccerGoal : MonoBehaviour, IFrameSyncOnStart
         {
-            StaticFrameSyncBehaviour _frameSyncBehaviour;
+            FrameSyncBehaviour _frameSyncBehaviour;
 
             public void OnStart(FrameSyncBehaviour frameSyncBehaviour)
             {
@@ -30,7 +30,7 @@ Replace the contents in the `SoccerGoal` script with the following.
                 //score
                 FrameSyncPlayer player = _frameSyncBehaviour.owner;
 
-                GameFlow gameFlow = FindObjectOfType<GameFlow>();
+                SoccerGameFlow gameFlow = FindObjectOfType<SoccerGameFlow>();
 
                 gameFlow.PlayerScored(player);
             }
@@ -41,19 +41,26 @@ Replace the contents in the `SoccerGoal` script with the following.
 
 ## **Trigger events**
 
-To enable trigger events of the `Goal` collider:
+To receive the trigger events of the `Goal` collider:
 
-- Enabled `Collision Events` of the `FRigidbody3D` component of the `Goal` GameObject
+- Enabled `Events` of the `FRigidbody3D` component of the `Goal` GameObject
 - Add an event listener to the `OnTriggerEnter` event, and select `OnFTriggerEnter`. 
 
-## **Physics Layer Settings**
+![img](./../../assets/soccer/triggerEvent.png){: width=512 }
 
-FPhysics supports the Unity physics layer settings. 
+## **Physics Layer Collision Matrix**
 
-Create the following layers and assign car, ball and goal to their layers
+FPhysics supports the Unity physics layer collision matrix. You will create layers and change the their collision matrix so the `Goal` collider only collides with the `Ball`.
+
+- Create the following layers and assign the `Car`, the `Ball` and the `Goal` to their layers
 
 Layer Name     | GameObject | Description
 --------| --------- | ----------------
 SoccerBall    | Ball   | Collides with the cars, the goals, and the Arena   
 SocerCars | Cars | Collides with other cars, the ball, and the Arena
 SoccerGoal   | Goals     | Collides with the ball only  
+
+- Select `Edit->Project Settings->Physics`.
+- Update the `Layer Collision Matrix` to the following:
+![img](./../../assets/soccer/collision.png){: width=512 }
+

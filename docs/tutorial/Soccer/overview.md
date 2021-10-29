@@ -4,7 +4,7 @@ Soccer is a Rocket League like 3D vehicular soccer game. It is deisgned to demon
 
 !!! note ""
     
-    The tutorials should take less than **30** mintues to complete.
+    The tutorials should take less than **60** mintues to complete.
 
 In these step-by-step tutorials, you will:
 
