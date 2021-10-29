@@ -1,6 +1,6 @@
 # **FrameSyncTimer**
 
-In this section, you will use FrameSyncTimer to add a delay before resetting the `Ball` and the `Car`s to their starting positions.
+In this section, you will use FrameSyncTimer to add a delay before resetting the `Ball` and the `Car`s positions.
 
 Update/Add the highlighted lines to the `SoccerGameFlow` script.
 
@@ -15,7 +15,7 @@ Update/Add the highlighted lines to the `SoccerGameFlow` script.
 
     namespace SWExample.Soccer
     {
-        public class SoccerGameFlow : MonoBehaviour, IFrameSyncTimerEventHandler, IFrameSyncOnStart, IFrameSyncComputerUpdate, 
+        public class SoccerGameFlow : MonoBehaviour, IFrameSyncTimerEventHandler, IFrameSyncOnStart, IFrameSyncComputerUpdate
         {
             [Header("UI")]
             public Text timeText;

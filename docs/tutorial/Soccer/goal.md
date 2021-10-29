@@ -50,7 +50,7 @@ To receive the trigger events of the `Goal` collider:
 
 ## **Physics Layer Collision Matrix**
 
-FPhysics supports the Unity physics layer collision matrix. You will create layers and change the their collision matrix so the `Goal` collider only collides with the `Ball`.
+FPhysics supports the Unity physics layer collision matrix. You will create layers and change their collision matrix so the `Goal` collider only collides with the `Ball`.
 
 - Create the following layers and assign the `Car`, the `Ball` and the `Goal` to their layers
 

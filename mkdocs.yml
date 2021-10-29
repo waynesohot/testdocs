@@ -32,6 +32,9 @@ nav:
       - Reset to Start Position: tutorial/Soccer/reset.md
       - FrameSyncTimer: tutorial/Soccer/frameSyncTimer.md
       - Game States Snapshot: tutorial/Soccer/snapshot.md
+      - Phyiscs Engine Snapshot: tutorial/Soccer/physicsEngineSnapshot.md
+      - Game Flow Snapshot: tutorial/Soccer/gameFlowSnapshot.md
+      - Desync Detection: tutorial/Soccer/desync.md
     - Pong Game:
       - Overview: tutorial/pong/overview.md
       - Physics 2D: tutorial/pong/parallel2d.md

@@ -1,9 +1,11 @@
-# **Reset to The Start Position**
+# **Game Flow Snapshot**
 
-Add the highlighted lines to the `SoccerGameFlow` script to reset the `Ball` and the `Car`s to their starting positions.
+In this section, you will implement the `IFrameSyncDataContainer` interface to export/import the data stored in the `SoccerGameFlow` component. 
+
+Update/Add the highlighted lines to the `SoccerGameFlow` script.
 
 === "C#"
-    ``` c# hl_lines="17-25 62 65-82"
+    ``` c# hl_lines="10 109-127"
     using SocketWeaver.FrameSync;
     using SocketWeaver.FixedMath;
     using UnityEngine;
@@ -13,7 +15,7 @@ Add the highlighted lines to the `SoccerGameFlow` script to reset the `Ball` and
 
     namespace SWExample.Soccer
     {
-        public class SoccerGameFlow : MonoBehaviour, IFrameSyncComputerUpdate
+        public class SoccerGameFlow : MonoBehaviour, IFrameSyncTimerEventHandler, IFrameSyncOnStart, IFrameSyncComputerUpdate, IFrameSyncDataContainer
         {
             [Header("UI")]
             public Text timeText;
@@ -34,6 +36,19 @@ Add the highlighted lines to the `SoccerGameFlow` script to reset the `Ball` and
             public int player1Score;
             public int player2Score;
 
+            [Header("Timer")]
+            public FFloat resetGameTime = FFloat.FromDivision(5, 1);
+            public int resetTimer;
+
+            FrameSyncBehaviour _frameSyncBehaviour;
+
+            public void OnStart(FrameSyncBehaviour frameSyncBehaviour)
+            {
+                _frameSyncBehaviour = frameSyncBehaviour;
+
+                resetTimer = FrameSyncTimer.CreateTimer(resetGameTime, false);
+            }
+
             public void OnComputerUpdate(FrameSyncGame game)
             {
                 float elapsed = (float)game.Elapsed();
@@ -47,6 +62,18 @@ Add the highlighted lines to the `SoccerGameFlow` script to reset the `Ball` and
 
                 player1Text.text = $"{player1Score}";
                 player2Text.text = $"{player2Score}";
+            }
+
+            public void OnTimerEvent(int timerId, FFloat elapsed)
+            {
+                FrameSyncUpdateType updateType = _frameSyncBehaviour.game.updateType;
+                int frameNumber = _frameSyncBehaviour.game.frameNumber;
+
+                if (timerId == resetTimer)
+                {
+                    Debug.Log($"ResetTimer updateType={updateType} frameNumber={frameNumber}");
+                    ResetGame();
+                }
             }
 
             public void PlayerScored(FrameSyncPlayer player)
@@ -65,7 +92,7 @@ Add the highlighted lines to the `SoccerGameFlow` script to reset the `Ball` and
                     player2Score++;
                 }
 
-                ResetGame();
+                FrameSyncTimer.RestartTimer(resetTimer);
             }
 
             void ResetGame()
@@ -86,17 +113,23 @@ Add the highlighted lines to the `SoccerGameFlow` script to reset the `Ball` and
                 fRigidbody3D.velocity = FVector3.zero;
                 fRigidbody3D.angularVelocity = FVector3.zero;
             }
+        
+            public void OnImport(SWBytes buffer)
+            {
+                player1Score = buffer.PopInt();
+                player2Score = buffer.PopInt();
+
+                resetTimer = buffer.PopInt();
+            }
+
+            public void OnExport(SWBytes buffer)
+            {
+                buffer.Push(player1Score);
+                buffer.Push(player2Score);
+
+                buffer.Push(resetTimer);
+            }
         }
     }
 
     ```
-- Drag the `Ball`, and the `Car`s into the `Rigidbodies` fields.
-- Create empty GameObjects at the starting positions of the `Ball`, and the `Call`s.
-- Attach `FTransform` component to the empty GameObjects.
-- Drag the empty GameObjects to the `Start Positions` fields.
-
-## **Test**
-Hit **Play**, you should see that the balls and the cars get reset to their starting positions.
-
-![img](./../../assets/soccer/reset.gif){: width=1080 }
-

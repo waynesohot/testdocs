@@ -1,4 +1,4 @@
-# **Display the scores**
+# **Display The Scores**
 
 In this section, you will update the HUD to display the scores.
 
