@@ -26,6 +26,9 @@ You can use it to replace `float`, `Vector2`, `Vector3`, `Quaternion`, `Matrix4x
 ### **FPhyscis**
 Cross-platform deterministic 2D and 3D physics engines which run on the FixedMath library. They are designed to be used with the FrameSync library.
 
+### **Deterministic Execution Order**
+You can implement your game logic in the IFrameSync interfaces as their update order is guarenteed deterministic.
+
 
 [1]: ../fixedmath/fixedmath.md
 [2]: ../fixedmath/fmath.md
