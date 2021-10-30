@@ -97,8 +97,6 @@ Update/Add the highlighted lines to the `SoccerGameFlow` script.
 
             void ResetGame()
             {
-                ball.gameObject.SetActive(true);
-
                 ResetRigidbody(ball, ballStartPosition);
                 ResetRigidbody(player1, player1StartPosition);
                 ResetRigidbody(player2, player2StartPosition);

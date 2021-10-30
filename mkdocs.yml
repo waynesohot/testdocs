@@ -35,6 +35,8 @@ nav:
       - Phyiscs Engine Snapshot: tutorial/Soccer/physicsEngineSnapshot.md
       - Game Flow Snapshot: tutorial/Soccer/gameFlowSnapshot.md
       - Desync Detection: tutorial/Soccer/desync.md
+      - Goal Explosion: tutorial/Soccer/goalExplosion.md
+      - Play in Online Rollback Mode: tutorial/Soccer/playOnline2.md
     - Pong Game:
       - Overview: tutorial/pong/overview.md
       - Physics 2D: tutorial/pong/parallel2d.md

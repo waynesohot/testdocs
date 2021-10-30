@@ -2,6 +2,8 @@
 
 Soccer is a Rocket League like 3D vehicular soccer game. It is deisgned to demonstrate the predition/rollback simulation feature of the FrameSync Library.
 
+![img](./../../assets/soccer/rollback.gif){: width=1080 }
+
 !!! note ""
     
     The tutorials should take less than **60** mintues to complete.

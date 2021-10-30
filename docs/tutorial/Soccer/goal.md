@@ -27,6 +27,10 @@ Replace the contents in the `SoccerGoal` script with the following.
 
             public void OnFTriggerEnter(FCollider3D fCollider)
             {
+                FrameSyncUpdateType updateType = _frameSyncBehaviour.game.updateType;
+                int frameNumber = _frameSyncBehaviour.game.frameNumber;
+                Debug.Log($"{fCollider.name} trigger enter, updateType={updateType} frameNumber={frameNumber}");
+
                 //score
                 FrameSyncPlayer player = _frameSyncBehaviour.owner;
 

@@ -123,14 +123,16 @@ Add the highlighted code to the `SoccerFrameSyncEngineController`. You are going
 
             protected override IFrameSyncSnapshot OnFrameSyncCreateCustomSnapshot(int frameNumber)
             {
-                return new PhysicsSnapshot(frameNumber);
+                return new SoccerPhysics3DSnapshot(frameNumber);
             }
 
             protected override IFrameSyncSnapshot OnFrameSyncImportCustomSnapshot(int frameNumber, byte[] bytes)
             {
-                return new PhysicsSnapshot(frameNumber, bytes);
+                return new SoccerPhysics3DSnapshot(frameNumber, bytes);
             }
         }
     }
 
     ```
+
+    

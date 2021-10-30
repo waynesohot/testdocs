@@ -5,7 +5,7 @@ In this section, you will implement the `IFrameSyncDataContainer` interface to e
 Update/Add the highlighted lines to the `SoccerGameFlow` script.
 
 === "C#"
-    ``` c# hl_lines="10 109-127"
+    ``` c# hl_lines="10 107-121"
     using SocketWeaver.FrameSync;
     using SocketWeaver.FixedMath;
     using UnityEngine;
@@ -97,8 +97,6 @@ Update/Add the highlighted lines to the `SoccerGameFlow` script.
 
             void ResetGame()
             {
-                ball.gameObject.SetActive(true);
-
                 ResetRigidbody(ball, ballStartPosition);
                 ResetRigidbody(player1, player1StartPosition);
                 ResetRigidbody(player2, player2StartPosition);

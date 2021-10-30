@@ -10,6 +10,8 @@ You also created the `SoccerPhysicsSnapshot` to take snapshots of the physics en
 
 Add the highlighted code to the `SoccerFrameSyncEngineController`. You are going to verify the positions of the Ball and the Cars using the `FrameSyncChecksum` API. Also, you are going to stop the `FrameSyncEngine` on desync.
 
+Drag the ball and the cars to the checksum fields in the inspector.
+
 === "C#"
     ``` c# hl_lines="12-15 53-72"
     using SocketWeaver.FrameSync;

@@ -3,7 +3,7 @@
 Add the highlighted lines to the `SoccerGameFlow` script to reset the `Ball` and the `Car`s to their starting positions.
 
 === "C#"
-    ``` c# hl_lines="17-25 62 65-82"
+    ``` c# hl_lines="17-25 62 65-80"
     using SocketWeaver.FrameSync;
     using SocketWeaver.FixedMath;
     using UnityEngine;
@@ -70,8 +70,6 @@ Add the highlighted lines to the `SoccerGameFlow` script to reset the `Ball` and
 
             void ResetGame()
             {
-                ball.gameObject.SetActive(true);
-
                 ResetRigidbody(ball, ballStartPosition);
                 ResetRigidbody(player1, player1StartPosition);
                 ResetRigidbody(player2, player2StartPosition);
